@@ -26,8 +26,8 @@ GOTO :mainmenu
 mkdir "%backDestLet%:\StaplesBackup"
 mkdir "%backDestLet%:\StaplesBackup\Users"
 robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Users" /v /log:"%backDestLet%:\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
-echo "BACKUP COMPLETE. Displaying log file.
-start "" "E:\backupLog.txt"
+echo "INITIAL BACKUP COMPLETE. Displaying log file.
+start "" "%backDestLet%:\backupLog.txt"
 GOTO :end
 
 :backupextrafolders
@@ -53,8 +53,13 @@ GOTO :backupextraloop
 :performextrabackup
 SET performcount=0
 :performloop
+SET /A performcount=performcount+1
+echo Starting backup of extra folder number %performcount%
+robocopy "backupExtraPath[performcount]" "%backDestLet%:\StaplesBackup\Extra%performcount%" /v /log:"%backDestLet%:\extraBackupLog%performcount%.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj 
+start "Extra %performcount%" "%backDestLet%:\extraBackupLog%performcount%.txt"
 
-
+IF %performcount% LSS %extracount% GOTO :performloop
+echo "EXTRA FOLDERS BACKUP COMPLETE. Displaying log file.
 
 :end
 echo TASKS COMPLETE. YOU HAVE REACHED THE END OF THE SCRIPT.
