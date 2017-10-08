@@ -3,7 +3,7 @@ echo Welcome to Staples Store #17 Tech Backup & Migrate script!
 
 :mainmenu
 echo 
-echo MAIN MENU
+echo ----------MAIN MENU----------
 echo 1. Backup Data
 echo 2. Migrate Data [COMING SOON]
 SET /P backMigSel=What would you like to do? 
