@@ -1,5 +1,5 @@
 @echo off
-echo Welcome to Staples Store #17 Tech Backup & Migrate script!
+echo Welcome to Staples Store #17 Tech Backup and Migrate script!
 
 :mainmenu
 echo 
