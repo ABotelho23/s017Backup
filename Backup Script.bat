@@ -1,7 +1,9 @@
 @echo off
-echo Welcome to Staples Store #17 Tech Backup and Migrate script
+echo Welcome to Staples Store #17 Tech Backup and Migrate script!
+
 :mainmenu
-echo Main Menu
+echo 
+echo MAIN MENU
 echo 1. Backup Data
 echo 2. Migrate Data [COMING SOON]
 
@@ -20,4 +22,7 @@ echo "BACKUP COMPLETE. Displaying log file.
 start "" "E:\backupLog.txt"
 GOTO :end
 
+
+
 :end
+pause
