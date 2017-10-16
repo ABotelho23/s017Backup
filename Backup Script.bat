@@ -15,7 +15,7 @@ GO TO :mainmenu
 :backup
 SET /P backDestLet=What is the drive letter of the drive to put the backup unto? 
 IF /I "%backDestLet%"=="c" GOTO :invalidletter
-IF NOT EXIST "backDestLet%:\" GOTO :invalidletter
+IF NOT EXIST "%backDestLet%:\" GOTO :invalidletter
 
 GOTO skipinvalidletter
 :invalidletter
