@@ -6,21 +6,28 @@ echo
 echo ----------MAIN MENU----------
 echo 1. Backup Data
 echo 2. Migrate Data [COMING SOON]
-SET /P backMigSel=What would you like to do? 
+REM prompt between backup or migrate
+SET /P backMigSel=What would you like to do?
 
+REM if selection is 1, go to backup section
 IF "%backMigSel%"=="1" GOTO :backup
+REM if not a 1, start again
 echo Not a valid selection, please try again.
 GO TO :mainmenu
 
 :backup
 SET /P backDestLet=What is the drive letter of the drive to put the backup unto? 
+REM C drive is automatically invalid for destination drive
 IF /I "%backDestLet%"=="c" GOTO :invalidletter
+REM check if the selected drive is actually available
 IF NOT EXIST "%backDestLet%:\" GOTO :invalidletter
 
+REM skips the next section to isolate it
 GOTO skipinvalidletter
 :invalidletter
 echo This is an invalid selection, try again.
-GOTO :mainmenu
+REM after inputting an invalid letter, we go back to backup section
+GOTO :backup
 
 :skipinvalidletter
 
