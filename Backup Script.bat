@@ -19,15 +19,8 @@ IF "%backDestLet%"=="c" GOTO :invalidletter
 IF "%backDestLet%"=="C" GOTO :invalidletter
 IF NOT EXIST "%backDestLet%:\" GOTO :invalidletter
 
-echo Valid selection. Starting Backup in 5
-SLEEP 1
-echo 4
-SLEEP 1
-echo 3
-SLEEP 1
-echo 2
-SLEEP 1
-echo 1
+echo Valid selection. Starting Backup
+TIMEOUT 5
 
 mkdir "%backDestLet%:\StaplesBackup"
 mkdir %backDestLet%:\StaplesBackup\Users"
