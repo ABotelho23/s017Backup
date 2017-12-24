@@ -19,6 +19,16 @@ IF "%backDestLet%"=="c" GOTO :invalidletter
 IF "%backDestLet%"=="C" GOTO :invalidletter
 IF NOT EXIST "%backDestLet%:\" GOTO :invalidletter
 
+echo Valid selection. Starting Backup in 5
+SLEEP 1
+echo 4
+SLEEP 1
+echo 3
+SLEEP 1
+echo 2
+SLEEP 1
+echo 1
+
 mkdir "%backDestLet%:\StaplesBackup"
 mkdir %backDestLet%:\StaplesBackup\Users"
 robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Users" /v /log:"%backDestLet%:\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
