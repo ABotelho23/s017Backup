@@ -10,7 +10,7 @@ set /P backMigSel=What would you like to do?
 
 IF "%backMigSel%"=="1" GOTO :backup
 echo Not a valid selection, please try again.
-GO TO :mainmenu
+GOTO :mainmenu
 
 :backup
 set /P backDestLet=What is the drive letter of the drive to put the backup unto? 
