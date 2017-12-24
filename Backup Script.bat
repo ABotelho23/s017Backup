@@ -16,7 +16,7 @@ GOTO :mainmenu
 set /P backDestLet=What is the drive letter of the drive to put the backup unto? 
 IF "%backDestLet%"=="c" GOTO :invalidletter
 IF "%backDestLet%"=="C" GOTO :invalidletter
-IF NOT EXIST "backDestLet%:\" GOTO :invalid letter
+IF NOT EXIST "backDestLet%:\" GOTO :invalidletter
 
 mkdir "%backDestLet%:\StaplesBackup"
 mkdir %backDestLet%:\StaplesBackup\Users"
