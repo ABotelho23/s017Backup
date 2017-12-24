@@ -3,8 +3,8 @@ openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto :NotAdmin 
 goto :mainmenu 
 :NotAdmin
-echo Please run as admin. Closing in 5 seconds.
-TIMEOUT 5
+echo Please run as admin. Closing in 3 seconds.
+TIMEOUT 3
 GOTO :realend
 
 echo Welcome to Staples Store #17 Tech Backup and Migrate script!
@@ -27,8 +27,8 @@ IF "%backDestLet%"=="c" GOTO :invalidletter
 IF "%backDestLet%"=="C" GOTO :invalidletter
 IF NOT EXIST "%backDestLet%:\" GOTO :invalidletter
 
-echo Valid selection. Starting Backup
-TIMEOUT 5
+echo Valid selection. Starting Backup in 3 seconds.
+TIMEOUT 3
 
 mkdir "%backDestLet%:\StaplesBackup"
 mkdir %backDestLet%:\StaplesBackup\Users"
