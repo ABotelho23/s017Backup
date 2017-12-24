@@ -22,7 +22,7 @@ IF NOT EXIST "%backDestLet%:\" GOTO :invalidletter
 mkdir "%backDestLet%:\StaplesBackup"
 mkdir %backDestLet%:\StaplesBackup\Users"
 robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Users" /v /log:"%backDestLet%:\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
-echo "BACKUP COMPLETE. Displaying log file.
+echo BACKUP COMPLETE. Displaying log file.
 start "" "E:\backupLog.txt"
 GOTO :end
 
