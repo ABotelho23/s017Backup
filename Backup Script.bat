@@ -2,7 +2,8 @@
 echo Welcome to Staples Store #17 Tech Backup and Migrate script!
 
 :mainmenu
-echo 
+echo ----------
+echo ----------
 echo MAIN MENU
 echo 1. Backup Data
 echo 2. Migrate Data [COMING SOON]
