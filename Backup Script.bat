@@ -5,7 +5,7 @@ goto :mainmenu
 :NotAdmin
 echo Please run as admin. Closing in 5 seconds.
 TIMEOUT 5
-:realend
+GOTO :realend
 
 echo Welcome to Staples Store #17 Tech Backup and Migrate script!
 
