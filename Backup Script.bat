@@ -1,9 +1,18 @@
 @echo off
+openfiles > NUL 2>&1 
+if NOT %ERRORLEVEL% EQU 0 goto :NotAdmin 
+goto :mainmenu 
+:NotAdmin
+echo Please run as admin. Closing in 3 seconds.
+TIMEOUT 3
+GOTO :realend
+
 echo Welcome to Staples Store #17 Tech Backup and Migrate script!
 
 :mainmenu
-echo 
-echo ----------MAIN MENU----------
+echo ----------
+echo ----------
+echo MAIN MENU
 echo 1. Backup Data
 echo 2. Migrate Data [COMING SOON]
 REM prompt between backup or migrate
@@ -13,29 +22,22 @@ REM if selection is 1, go to backup section
 IF "%backMigSel%"=="1" GOTO :backup
 REM if not a 1, start again
 echo Not a valid selection, please try again.
-GO TO :mainmenu
+GOTO :mainmenu
 
 :backup
-SET /P backDestLet=What is the drive letter of the drive to put the backup unto? 
-REM C drive is automatically invalid for destination drive
-IF /I "%backDestLet%"=="c" GOTO :invalidletter
-REM check if the selected drive is actually available
+set /P backDestLet=What is the drive letter of the drive to put the backup unto? 
+IF "%backDestLet%"=="c" GOTO :invalidletter
+IF "%backDestLet%"=="C" GOTO :invalidletter
 IF NOT EXIST "%backDestLet%:\" GOTO :invalidletter
 
-REM skips the next section to isolate it
-GOTO skipinvalidletter
-:invalidletter
-echo This is an invalid selection, try again.
-REM after inputting an invalid letter, we go back to backup section
-GOTO :backup
-
-:skipinvalidletter
+echo Valid selection. Starting Backup in 3 seconds.
+TIMEOUT 3
 
 mkdir "%backDestLet%:\StaplesBackup"
 mkdir "%backDestLet%:\StaplesBackup\Users"
 robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Users" /v /log:"%backDestLet%:\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
-echo "INITIAL BACKUP COMPLETE. Displaying log file.
-start "" "%backDestLet%:\backupLog.txt"
+echo BACKUP COMPLETE. Displaying log file.
+start "" "E:\backupLog.txt"
 GOTO :end
 
 :backupextrafolders
@@ -72,3 +74,4 @@ echo "EXTRA FOLDERS BACKUP COMPLETE. Displaying log file.
 :end
 echo TASKS COMPLETE. YOU HAVE REACHED THE END OF THE SCRIPT.
 pause
+:realend
