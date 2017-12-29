@@ -42,12 +42,12 @@ GOTO :end
 
 :backupextrafolders
 SET extracount=0
-:backupextrainput
+:extrabackupinput
 SET /P backupExtraInput=Would you like to backup extra folders not present under Users[y/n]? 
 IF "%backupExtraInput%"=="y" GOTO :extrabackuploop
 IF "%backupExtraInput%"=="n" GOTO :end
 echo Invalid selection, please type y or n.
-GOTO :backupextrainput
+GOTO :extrabackupinput
 
 :extrabackuploop
 SET /A extracount=extracount+1
@@ -58,7 +58,7 @@ SET /P backupExtraAgain=Add another folder to extra backups[y/n]?
 IF "%backupExtraAgain%"=="y" GOTO :extrabackuploop
 IF "%backupExtraAgain%"=="n" GOTO :performextrabackup
 echo Invalid selection, please type y or n.
-GOTO :backupextraloop
+GOTO :extrabackuploop
 
 :performextrabackup
 SET performcount=0
