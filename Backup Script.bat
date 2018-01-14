@@ -15,9 +15,11 @@ echo ----------
 echo MAIN MENU
 echo 1. Backup Data
 echo 2. Migrate Data [COMING SOON]
+echo 3. Migrate Data (Custom) [COMING SOON]
 set /P backMigSel=What would you like to do? 
 
 IF "%backMigSel%"=="1" GOTO :backup
+IF "%backMigSel%"=="2" GOTO :migration
 echo Not a valid selection, please try again.
 GOTO :mainmenu
 
@@ -37,6 +39,8 @@ robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Backup\Users" /v /log:"%backDe
 echo BACKUP COMPLETE. Displaying log file.
 start "" "%backDestLet%:\StaplesBackup\backupLog.txt"
 GOTO :end
+
+:migration
 
 :cantusec
 echo C: drive cannot be used as a destination, please select another drive
