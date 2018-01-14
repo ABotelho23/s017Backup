@@ -23,8 +23,8 @@ GOTO :mainmenu
 
 :backup
 set /P backDestLet=What is the drive letter of the drive to put the backup unto? 
-IF "%backDestLet%"=="c" GOTO :invalidletter
-IF "%backDestLet%"=="C" GOTO :invalidletter
+IF "%backDestLet%"=="c" GOTO :cantusec
+IF "%backDestLet%"=="C" GOTO :cantusec
 IF NOT EXIST "%backDestLet%:\" GOTO :invalidletter
 
 echo Valid selection. Starting Backup in 3 seconds.
@@ -38,9 +38,13 @@ echo BACKUP COMPLETE. Displaying log file.
 start "" "%backDestLet%:\StaplesBackup\backupLog.txt"
 GOTO :end
 
+:cantusec
+echo C: drive cannot be used as a destination, please select another drive
+GOTO :backup
+
 :invalidletter
-echo This is an invalid selection, try again.
-GOTO :mainmenu
+echo A drive with that letter is not connected. Please check the letter and try again.
+GOTO :backup
 
 :end
 pause
