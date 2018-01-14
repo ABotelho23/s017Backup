@@ -31,10 +31,11 @@ echo Valid selection. Starting Backup in 3 seconds.
 TIMEOUT 3
 
 mkdir "%backDestLet%:\StaplesBackup"
-mkdir %backDestLet%:\StaplesBackup\Users"
-robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Users" /v /log:"%backDestLet%:\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
+mkdir %backDestLet%:\StaplesBackup\Backup"
+mkdir %backDestLet%:\StaplesBackup\Backup\StaplesBackup"
+robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Backup\Users" /v /log:"%backDestLet%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
 echo BACKUP COMPLETE. Displaying log file.
-start "" "E:\backupLog.txt"
+start "" "%backDestLet%:\StaplesBackup\backupLog.txt"
 GOTO :end
 
 :invalidletter
