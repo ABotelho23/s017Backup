@@ -1,13 +1,12 @@
 @echo off
 openfiles > NUL 2>&1 
 if NOT %ERRORLEVEL% EQU 0 goto :NotAdmin 
+echo Welcome to Staples Store #17 Tech Backup and Migrate script!
 goto :mainmenu 
 :NotAdmin
 echo Please run as admin. Closing in 10 seconds.
 TIMEOUT 10
 GOTO :realend
-
-echo Welcome to Staples Store #17 Tech Backup and Migrate script!
 
 :mainmenu
 echo ----------
