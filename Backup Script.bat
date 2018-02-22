@@ -49,7 +49,7 @@ set /P migSrcLet=What is the drive letter of the drive to migrate from?
 IF "%migSrcLet%"=="c" GOTO :cantusecmig
 IF "%migSrcLet%"=="C" GOTO :cantusecmig
 IF NOT EXIST "%migSrcLet%:\" GOTO :invalidlettermig
-IF NOT EXIST "%migSrcLet%:\" GOTO :nobackupfound
+IF NOT EXIST "%migSrcLet%:\StaplesBackup" GOTO :nobackupfound
 
 echo Valid selection. Starting Migration in 3 seconds.
 echo Note: Migration is done to Users folder; if old user folder name is different from new user old, unexpected results may occur.
@@ -66,7 +66,7 @@ echo Custom migrations not yet available. Please try again.
 GOTO :mainmenu
 
 :migrateoldpc
-set /P backDestLet=What is the drive letter of the old drive connected as?
+set /P oldSrcLet=What is the drive letter of the old drive connected as?
 IF "%oldSrcLet%"=="c" GOTO :cantusecold
 IF "%oldSrcLet%"=="C" GOTO :cantusecold
 IF NOT EXIST "%oldSrcLet%:\" GOTO :invalidletterold
