@@ -32,9 +32,9 @@ IF "%backDestLet%"=="c" GOTO :cantusecback
 IF "%backDestLet%"=="C" GOTO :cantusecback
 IF NOT EXIST "%backDestLet%:\" GOTO :invalidletterback
 
-echo Valid selection. Starting Backup in 3 seconds.
-TIMEOUT 3
-echo STARTING BACKUP from C:\Users to "%backDestLet%:\StaplesBackup\Users".
+echo Valid selection. Starting Backup from C:\Users to "%backDestLet%:\StaplesBackup\Users" in 10 seconds.
+TIMEOUT 10
+echo STARTING BACKUP NOW!
 
 mkdir "%backDestLet%:\StaplesBackup"
 mkdir "%backDestLet%:\StaplesBackup\Backup"
@@ -51,10 +51,10 @@ IF "%migSrcLet%"=="C" GOTO :cantusecmig
 IF NOT EXIST "%migSrcLet%:\" GOTO :invalidlettermig
 IF NOT EXIST "%migSrcLet%:\StaplesBackup" GOTO :nobackupfound
 
-echo Valid selection. Starting Migration in 3 seconds.
+echo Valid selection. Starting Migration from "%migSrcLet%:\StaplesBackup\Backup\Users" to "C:\Users" in 10 seconds.
 echo Note: Migration is done to Users folder; if old user folder name is different from new user old, unexpected results may occur.
-TIMEOUT 3
-echo STARTING MIGRATION from "%migSrcLet%:\StaplesBackup\Backup\Users" to "C:\Users".
+TIMEOUT 10
+echo STARTING MIGRATION NOW!
 
 robocopy "%migSrcLet%:\StaplesBackup\Backup\Users" "C:\Users" /v /log:"C:\Users\migrationLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta
 echo MIGRATION COMPLETE. Displaying log file.
@@ -68,9 +68,9 @@ IF "%oldSrcLet%"=="C" GOTO :cantusecold
 IF NOT EXIST "%oldSrcLet%:\" GOTO :invalidletterold
 IF NOT EXIST "%oldSrcLet%:\Users" GOTO :notoldhdd
 
-echo Valid selection. Starting Migration from old PC in 3 seconds.
-TIMEOUT 3
-echo STARTING MIGRATION FROM OLD PC "%oldSrcLet%:\Users" to "C:\Users".
+echo Valid selection. Starting Migration from old PC "%oldSrcLet%:\Users" to "C:\Users" in 10 seconds.
+TIMEOUT 10
+echo STARTING MIGRATION FROM OLD PC NOW!
 
 robocopy "%oldSrcLet%:\Users" "C:\Users" /v /log:"C:\Users\migrationLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%oldSrcLet%:\Users\All Users" /xd "%oldSrcLet%:\Default User" /xd "%oldSrcLet%:\Users\Default" /xd "%oldSrcLet%:\Users\DefaultAppPool" /xd "%oldSrcLet%:\Users\Default.migrated"
 echo MIGRATION FROM OLD PC COMPLETE. Please verify. Displaying log file.
