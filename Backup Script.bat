@@ -30,14 +30,11 @@ echo MAIN MENU - What would you like to do?
 echo 1. Backup Data
 echo 2. Migrate Data [experimental]
 echo 3. Migrate Data (Custom) [COMING SOON]
-echo 4. Migrate Directly from an Old PC [COMING SOON]
 set /P backMigSel=What would you like to do?
 
 IF "%backMigSel%"=="1" GOTO :backup
 IF "%backMigSel%"=="2" GOTO :migration
 IF "%backMigSel%"=="3" GOTO :migrationcustom
-IF "%backMigSel%"=="4" GOTO :migrateoldpc
-
 echo That is not a valid selection, please try again.
 GOTO :mainmenu
 
@@ -76,11 +73,7 @@ start "" "C:\Users\migrationLog.txt"
 GOTO :end
 
 :migrationcustom
-echo Custom migrations not yet available. Please try again.
-GOTO :mainmenu
-
-:migrateoldpc
-echo Migrating from an old PC is not available yet. Please try again.
+echo Custom migrations not yet available. Try again.
 GOTO :mainmenu
 
 :cantusecback
