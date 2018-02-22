@@ -66,6 +66,7 @@ set /P oldSrcLet=What is the drive letter of the old drive connected as?
 IF "%oldSrcLet%"=="c" GOTO :cantusecold
 IF "%oldSrcLet%"=="C" GOTO :cantusecold
 IF NOT EXIST "%oldSrcLet%:\" GOTO :invalidletterold
+IF NOT EXIST "%oldSrcLet%:\Users" GOTO :notoldhdd
 
 echo Valid selection. Starting Migration from old PC in 3 seconds.
 TIMEOUT 3
@@ -107,6 +108,10 @@ GOTO :migrateoldpc
 :invalidletterold
 echo A drive with that letter is not connected. Please check the letter and try again.
 GOTO :migrateoldpc
+
+:nobackupfound
+echo This drive doesn't look like an old PC's drive. Please try again.
+GOTO :migration
 
 :end
 pause
