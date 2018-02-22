@@ -72,9 +72,9 @@ echo Valid selection. Starting Migration from old PC "%oldSrcLet%:\Users" to "C:
 TIMEOUT 10
 echo STARTING MIGRATION FROM OLD PC NOW!
 
-robocopy "%oldSrcLet%:\Users" "C:\Users" /v /log:"C:\Users\migrationLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%oldSrcLet%:\Users\All Users" /xd "%oldSrcLet%:\Default User" /xd "%oldSrcLet%:\Users\Default" /xd "%oldSrcLet%:\Users\DefaultAppPool" /xd "%oldSrcLet%:\Users\Default.migrated"
+robocopy "%oldSrcLet%:\Users" "C:\Users" /v /log:"C:\Users\migrationOldPCLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%oldSrcLet%:\Users\All Users" /xd "%oldSrcLet%:\Default User" /xd "%oldSrcLet%:\Users\Default" /xd "%oldSrcLet%:\Users\DefaultAppPool" /xd "%oldSrcLet%:\Users\Default.migrated"
 echo MIGRATION FROM OLD PC COMPLETE. Please verify. Displaying log file.
-start "" "C:\Users\migrationLog.txt"
+start "" "C:\Users\migrationOldPCLog.txt"
 GOTO :end
 
 :migrationcustom
