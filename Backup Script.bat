@@ -1,28 +1,13 @@
 @echo off
-<<<<<<< HEAD
 openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto :NotAdmin
+echo Welcome to Staples Store #17 Tech Backup and Migrate script!
 goto :mainmenu
-=======
-openfiles > NUL 2>&1 
-if NOT %ERRORLEVEL% EQU 0 goto :NotAdmin 
-goto :mainmenu 
->>>>>>> master
 :NotAdmin
 echo PLEASE RUN AS ADMIN. Closing in 10 seconds.
 TIMEOUT 10
 GOTO :realend
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-echo Welcome to the Staples Store #17 Tech Services Backup and Migration script!
-
-=======
->>>>>>> master
-=======
-echo Welcome to Staples Store #17 Tech Backup and Migrate script!
-
->>>>>>> parent of 5b12034... Shifted welcome sentence so it actually displays
 :mainmenu
 echo ----------
 echo ----------
