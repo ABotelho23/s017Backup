@@ -39,7 +39,7 @@ echo STARTING BACKUP from C:\Users to "%backDestLet%:\StaplesBackup\Users".
 mkdir "%backDestLet%:\StaplesBackup"
 mkdir "%backDestLet%:\StaplesBackup\Backup"
 mkdir "%backDestLet%:\StaplesBackup\Backup\Users"
-robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Backup\Users" /v /log:"%backDestLet%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT* /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
+robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Backup\Users" /v /log:"%backDestLet%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
 echo BACKUP COMPLETE. Please verify. Displaying log file.
 start "" "%backDestLet%:\StaplesBackup\backupLog.txt"
 GOTO :end
