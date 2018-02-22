@@ -13,15 +13,15 @@ echo ----------
 echo ----------
 echo MAIN MENU - What would you like to do?
 echo 1. Backup Data
-echo 2. Migrate Data [experimental]
-echo 3. Migrate Data (Custom) [COMING SOON]
-echo 4. Migrate Directly from an Old PC [COMING SOON]
+echo 2. Migrate Data [experimental/testing]
+echo 3. Migrate Directly from an Old PC's HDD [experimental/testing]
+echo 4. Migrate Data (Custom) [COMING SOON]
 set /P backMigSel=What would you like to do?
 
 IF "%backMigSel%"=="1" GOTO :backup
 IF "%backMigSel%"=="2" GOTO :migration
-IF "%backMigSel%"=="3" GOTO :migrationcustom
-IF "%backMigSel%"=="4" GOTO :migrateoldpc
+IF "%backMigSel%"=="3" GOTO :migrateoldpc
+IF "%backMigSel%"=="4" GOTO :migrationcustom
 
 echo That is not a valid selection, returning to main menu.
 GOTO :mainmenu
@@ -61,10 +61,6 @@ echo MIGRATION COMPLETE. Displaying log file.
 start "" "C:\Users\migrationLog.txt"
 GOTO :end
 
-:migrationcustom
-echo Custom migrations not yet available. Please try again.
-GOTO :mainmenu
-
 :migrateoldpc
 set /P oldSrcLet=What is the drive letter of the old drive connected as?
 IF "%oldSrcLet%"=="c" GOTO :cantusecold
@@ -79,6 +75,10 @@ robocopy "%oldSrcLet%:\Users" "C:\Users" /v /log:"C:\Users\migrationLog.txt" /e 
 echo MIGRATION FROM OLD PC COMPLETE. Please verify. Displaying log file.
 start "" "C:\Users\migrationLog.txt"
 GOTO :end
+
+:migrationcustom
+echo Custom migrations not yet available. Please try again.
+GOTO :mainmenu
 
 :cantusecback
 echo C: drive cannot be used as a destination, please select another drive
