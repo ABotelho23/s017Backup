@@ -109,7 +109,7 @@ GOTO :migrateoldpc
 echo A drive with that letter is not connected. Please check the letter and try again.
 GOTO :migrateoldpc
 
-:nobackupfound
+:notoldpc
 echo This drive doesn't look like an old PC's drive. Please try again.
 GOTO :migration
 
