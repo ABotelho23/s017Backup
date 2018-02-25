@@ -54,7 +54,7 @@ IF NOT EXIST "%migSrcLet%:\" GOTO :invalidlettermig
 IF NOT EXIST "%migSrcLet%:\StaplesBackup" GOTO :nobackupfound
 
 echo Valid selection. Starting Migration from "%migSrcLet%:\StaplesBackup\Backup\Users" to "C:\Users" in 10 seconds.
-echo Note: Migration is done to Users folder; if old user folder name is different from new user old, unexpected results may occur.
+echo Note: Migration is done to Users folder; if old user folder name is different from new user, unexpected results may occur.
 TIMEOUT 10
 echo STARTING MIGRATION NOW!
 
