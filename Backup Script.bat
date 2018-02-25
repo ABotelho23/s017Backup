@@ -16,12 +16,14 @@ echo 1. Backup Data
 echo 2. Migrate Data [experimental/testing]
 echo 3. Migrate Directly from an Old PC's HDD [experimental/testing]
 echo 4. Migrate Data (Custom) [COMING SOON]
-set /P backMigSel=What would you like to do?
+set /P backMigSel=What would you like to do? ('q'/'Q' to quit)
 
 IF "%backMigSel%"=="1" GOTO :backup
 IF "%backMigSel%"=="2" GOTO :migration
 IF "%backMigSel%"=="3" GOTO :migrateoldpc
 IF "%backMigSel%"=="4" GOTO :migrationcustom
+IF "%backMigSel%"=="q" GOTO :quit
+IF "%backMigSel%"=="Q" GOTO :quit
 
 echo That is not a valid selection, returning to main menu.
 GOTO :mainmenu
@@ -78,7 +80,7 @@ start "" "C:\Users\migrationOldPCLog.txt"
 GOTO :end
 
 :migrationcustom
-echo Custom migrations not yet available. Please try again.
+echo Custom migrations not yet available. Please select something else.
 GOTO :mainmenu
 
 :cantusecback
@@ -111,7 +113,12 @@ GOTO :migrateoldpc
 
 :notoldpc
 echo This drive doesn't look like an old PC's drive. Please try again.
-GOTO :migration
+GOTO :migrateoldpc
+
+:quit
+echo "Quitting..."
+TIMEOUT 3
+GOTO :realend
 
 :end
 pause
