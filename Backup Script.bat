@@ -83,6 +83,14 @@ GOTO :end
 echo Custom migrations not yet available. Please select something else.
 GOTO :mainmenu
 
+:inputCustomSrc
+set /P customSrc=What is the source directory? Please include drive letter in path.
+IF NOT EXIST "customSrc" GOTO :customSrcNotExist
+
+:inputCustomDes
+set /P customDes=What is the destination directory? Please include drive letter in path.
+IF NOT EXIST "customDes" GOTO :customDesNotExist
+
 :cantusecback
 echo C: drive cannot be used as a destination, please select another drive
 GOTO :backup
@@ -114,6 +122,14 @@ GOTO :migrateoldpc
 :notoldpc
 echo This drive doesn't look like an old PC's drive. Please try again.
 GOTO :migrateoldpc
+
+:customSrcNotExist
+echo Can't find this source folder. Please double check and try again.
+GOTO :inputCustomSrc
+
+:customDesNotExist
+echo Can't find this destination folder. Please double check and try again.
+GOTO :inputCustomDes
 
 :quit
 echo "Quitting..."
