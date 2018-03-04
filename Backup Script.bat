@@ -110,7 +110,7 @@ IF "%customSrc%"=="C" GOTO :customcantusecbackSrc
 IF NOT EXIST "%customSrc%:\" GOTO :custominvalidletterbackSrc
 
 :customInputDes
-set /P customSrc=What is the drive letter of the drive to put the backup unto?
+set /P customDes=What is the drive letter of the drive to put the backup unto?
 IF "%customDes%"=="c" GOTO :customcantusecbackDes
 IF "%customDes%"=="C" GOTO :customcantusecbackDes
 IF NOT EXIST "%customDes%:\" GOTO :custominvalidletterbackDes
