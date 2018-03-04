@@ -12,16 +12,18 @@ GOTO :realend
 echo ----------
 echo ----------
 echo MAIN MENU - What would you like to do?
-echo 1. Backup Data
-echo 2. Migrate Data [experimental/testing]
-echo 3. Migrate Directly from an Old PC's HDD [experimental/testing]
-echo 4. Migrate Data (Custom) [COMING SOON]
-set /P backMigSel=What would you like to do? ('q'/'Q' to quit)
+echo 1. Backup Data  - Used for standard User folders backup when unit can boot.
+echo 2. Migrate Data [experimental/testing] - Used to migrate a User folders backup created by this script back unto the newly setup unit;s User folders.
+echo 3. Migrate Directly from an Old PC's HDD [experimental/testing] - Used for when the old PC does not boot, and its HDD is docked to the new PC.
+echo 4. Clone folders [NOT AVAILABLE YET]- Simply clones the contents of two folders. Do NOT use to migrate User folders; this option does not have exclusions for files not meant to be mgirated.
+echo 5. Backup Data (CUSTOM) [NOT AVAILABLE YET] - Used for backing up a PC's User folders when the PC does not boot. An external HDD is also required for this option.
+set /P backMigSel=What would you like to do? (Enter 1-5 or 'q'/'Q' to quit)
 
 IF "%backMigSel%"=="1" GOTO :backup
 IF "%backMigSel%"=="2" GOTO :migration
 IF "%backMigSel%"=="3" GOTO :migrateoldpc
-IF "%backMigSel%"=="4" GOTO :migrationcustom
+IF "%backMigSel%"=="4" GOTO :clonefolders
+IF "%backMigSel%"=="5" GOTO :custombackup
 IF "%backMigSel%"=="q" GOTO :quit
 IF "%backMigSel%"=="Q" GOTO :quit
 
@@ -79,17 +81,28 @@ echo MIGRATION FROM OLD PC COMPLETE. Please verify. Displaying log file.
 start "" "C:\Users\migrationOldPCLog.txt"
 GOTO :end
 
-:migrationcustom
-echo Custom migrations not yet available. Please select something else.
+:clonefolders
+
+:inputCloneSrc
+set /P customSrc=What is the source folder? Please include drive letter in path as well as the colon, and use backslashes.
+IF NOT EXIST "%cloneSrc%" GOTO :cloneSrcNotExist
+
+:inputCloneDes
+set /P cloneDes=What is the destination folder? Please include drive letter in path as well as the colon, and use backslashes.
+IF NOT EXIST "%cloneDes%" GOTO :cloneDesNotExist
+
+echo Valid selections. Starting Cloning of "%cloneSrc%" to "%cloneDes%" in 10 seconds.
+TIMEOUT 10
+echo STARTING CLONING NOW!
+
+robocopy "%cloneSrc%" "%cloneDes%" /v /log:"%cloneDes%\cloneLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj
+echo CLONING COMPLETE. Please verify. Displaying log file.
+start "" "%cloneDes%\cloneLog.txt"
+GOTO :end
+
+:custombackup
+echo Custom backups not yet available. Please select something else.
 GOTO :mainmenu
-
-:inputCustomSrc
-set /P customSrc=What is the source directory? Please include drive letter in path.
-IF NOT EXIST "customSrc" GOTO :customSrcNotExist
-
-:inputCustomDes
-set /P customDes=What is the destination directory? Please include drive letter in path.
-IF NOT EXIST "customDes" GOTO :customDesNotExist
 
 :cantusecback
 echo C: drive cannot be used as a destination, please select another drive
@@ -123,13 +136,13 @@ GOTO :migrateoldpc
 echo This drive doesn't look like an old PC's drive. Please try again.
 GOTO :migrateoldpc
 
-:customSrcNotExist
+:cloneSrcNotExist
 echo Can't find this source folder. Please double check and try again.
-GOTO :inputCustomSrc
+GOTO :inputCloneSrc
 
-:customDesNotExist
+:cloneDesNotExist
 echo Can't find this destination folder. Please double check and try again.
-GOTO :inputCustomDes
+GOTO :inputCloneDes
 
 :quit
 echo "Quitting..."
