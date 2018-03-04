@@ -87,7 +87,7 @@ set /P customSrc=What is the source folder? Please include drive letter in path 
 IF NOT EXIST "%cloneSrc%" GOTO :cloneSrcNotExist
 
 :inputCloneDes
-set /P cloneDes=What is the destination folder? Please include drive letter in path as well as the colon, and use backslashes.
+set /P cloneDes=What is the destination folder? Please include drive letter in path as well as the colon, and use backslashes. Do not include last backslash.
 IF NOT EXIST "%cloneDes%" GOTO :cloneDesNotExist
 
 echo Valid selections. Starting Cloning of "%cloneSrc%" to "%cloneDes%" in 10 seconds.
