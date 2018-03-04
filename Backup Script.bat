@@ -1,7 +1,7 @@
 @echo off
 openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto :NotAdmin
-echo Welcome to Staples Store #17 Tech Backup and Migrate script!
+echo Welcome to Staples Store #17 Tech Backup, Migrate and Folder Cloning script!
 goto :mainmenu
 :NotAdmin
 echo PLEASE RUN AS ADMIN. Closing in 10 seconds.
@@ -15,8 +15,8 @@ echo MAIN MENU - What would you like to do?
 echo 1. Backup Data  - Used for standard User folders backup when unit can boot.
 echo 2. Migrate Data [experimental/testing] - Used to migrate a User folders backup created by this script back unto the newly setup unit;s User folders.
 echo 3. Migrate Directly from an Old PC's HDD [experimental/testing] - Used for when the old PC does not boot, and its HDD is docked to the new PC.
-echo 4. Clone folders [experimental/testing]- Simply clones the contents of two folders. Do NOT use to migrate User folders; this option does not have exclusions for files not meant to be mgirated.
-echo 5. Backup Data (CUSTOM) [NOT AVAILABLE YET] - Used for backing up a PC's User folders when the PC does not boot. An external HDD is also required for this option.
+echo 4. Clone folders [experimental/testing]- Simply clones the contents of two folders. Do NOT use to migrate User folders; this option does not have exclusions for files not meant to be migrated.
+echo 5. Backup Data (CUSTOM) [NOT AVAILABLE YET] - Used for backing up a PC's User folders when the PC doesn't boot. An external HDD is also required for this option.
 set /P backMigSel=What would you like to do? (Enter 1-5 or 'q'/'Q' to quit)
 
 IF "%backMigSel%"=="1" GOTO :backup
@@ -82,7 +82,6 @@ start "" "C:\Users\migrationOldPCLog.txt"
 GOTO :end
 
 :clonefolders
-
 :inputCloneSrc
 set /P customSrc=What is the source folder? Please include drive letter in path as well as the colon, and use backslashes.
 IF NOT EXIST "%cloneSrc%" GOTO :cloneSrcNotExist
@@ -103,6 +102,26 @@ GOTO :end
 :custombackup
 echo Custom backups not yet available. Please select something else.
 GOTO :mainmenu
+
+:customInputSrc
+set /P customSrc=What is the drive letter of the drive to backup?
+IF "%customSrc%"=="c" GOTO :customcantusecbackSrc
+IF "%customSrc%"=="C" GOTO :customcantusecbackSrc
+IF NOT EXIST "%customSrc%:\" GOTO :custominvalidletterbackSrc
+
+:customInputDes
+set /P customSrc=What is the drive letter of the drive to put the backup unto?
+IF "%customDes%"=="c" GOTO :customcantusecbackDes
+IF "%customDes%"=="C" GOTO :customcantusecbackDes
+IF NOT EXIST "%customDes%:\" GOTO :custominvalidletterbackDes
+
+mkdir "%customDes%:\StaplesBackup"
+mkdir "%customDes%:\StaplesBackup\Backup"
+mkdir "%custom%:\StaplesBackup\Backup\Users"
+robocopy "%customSrc%" "%customDes%:\StaplesBackup\Backup\Users" /v /log:"%customDes%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%customSrc%:\Users\All Users" /xd "%customSrc%:\Default User" /xd "%customSrc%:\Users\Default" /xd "%customSrc%:\Users\DefaultAppPool" /xd "%customSrc%:\Users\Default.migrated"
+echo CUSTOM BACKUP COMPLETE. Please verify. Displaying log file.
+start "" "%customDes%:\StaplesBackup\backupLog.txt"
+GOTO :end
 
 :cantusecback
 echo C: drive cannot be used as a destination, please select another drive
@@ -143,6 +162,22 @@ GOTO :inputCloneSrc
 :cloneDesNotExist
 echo Can't find this destination folder. Please double check and try again.
 GOTO :inputCloneDes
+
+:customcantusecbackSrc
+echo C: drive cannot be used as a source for custom migrations, please select another drive (the drive should be an internal HDD docked).
+GOTO :customInputSrc
+
+:custominvalidletterbackSrc
+echo A drive with that letter is not connected. Please check the letter and try again.
+GOTO :customInputSrc
+
+:customcantusecbackDes
+echo C: drive cannot be used as a destination for custom migrations, please select another drive (the drive should be an external HDD).
+GOTO :customInputDes
+
+:custominvalidletterbackDes
+echo A drive with that letter is not connected. Please check the letter and try again.
+GOTO :customInputDes
 
 :quit
 echo "Quitting..."
