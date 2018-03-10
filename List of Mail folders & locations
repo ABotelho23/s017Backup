@@ -1,3 +1,15 @@
-Outlook?
-Live Mail?
-Outlook Express?
+Outlook:
+<user>/AppData/Local/Microsoft/Outlook/
+ost? pst? dst?
+
+Windows Live Mail
+<user>/AppData/Local/Microsoft/Windows Live Mail/
+ost? pst? dst?
+
+Windows Mail
+<user>/AppData/Local/Microsoft/Windows Mail/
+ost? pst? dst?
+
+Thunderbird
+<user>/AppData/Roaming/Thunderbird
+mbox? (are extensionless apparently!)
