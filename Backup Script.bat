@@ -30,7 +30,7 @@ echo 5. Backup Data (CUSTOM) [NOT AVAILABLE YET] - Used for backing up a PC's Us
 echo folders when the PC doesn't boot. An external HDD is also required for this option.
 echo ----------------------------------------------------------------------
 echo What would you like to do?
-set /P backMigSel=(Enter 1-5 or 'q'/'Q' to quit) 
+set /P backMigSel=(Enter 1-5 or 'q'/'Q' to quit)
 
 IF "%backMigSel%"=="1" GOTO :backup
 IF "%backMigSel%"=="2" GOTO :migration
@@ -113,8 +113,6 @@ start "" "%cloneDes%\cloneLog.txt"
 GOTO :end
 
 :custombackup
-echo Custom backups not yet available. Please select something else.
-GOTO :mainmenu
 
 :customInputSrc
 set /P customSrc=What is the drive letter of the drive to backup?
