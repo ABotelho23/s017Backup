@@ -256,7 +256,7 @@ GOTO :customInputDes
 
 :quit
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
-echo. "Quitting..."
+echo. Quitting...
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 TIMEOUT 3
 @cls
