@@ -140,63 +140,106 @@ GOTO :end
 
 :cantusecback
 echo. C: drive cannot be used as a destination, please select another drive
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :backup
 
 :invalidletterback
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. A drive with that letter is not connected. Please check the letter and try again.
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :backup
 
 :cantusecmig
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. C: drive cannot be used as a source, please select another drive
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :migration
 
 :invalidlettermig
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. A drive with that letter is not connected. Please check the letter and try again.
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :migration
 
 :nobackupfound
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. Staples-made backup not found on the selected drive. Please try again.
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :migration
 
 :cantusecold
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. C: drive cannot be used as a source, please select another drive
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :migrateoldpc
 
 :invalidletterold
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. A drive with that letter is not connected. Please check the letter and try again.
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :migrateoldpc
 
 :notoldpc
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. This drive doesn't look like an old PC's drive. Please try again.
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :migrateoldpc
 
 :cloneSrcNotExist
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. Can't find this source folder. Please double check and try again.
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :inputCloneSrc
 
 :cloneDesNotExist
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. Can't find this destination folder. Please double check and try again.
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :inputCloneDes
 
 :customcantusecbackSrc
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. C: drive cannot be used as a source for custom migrations, please select another drive (the drive should be an internal HDD docked).
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :customInputSrc
 
 :custominvalidletterbackSrc
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. A drive with that letter is not connected. Please check the letter and try again.
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :customInputSrc
 
 :customcantusecbackDes
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. C: drive cannot be used as a destination for custom migrations, please select another drive (the drive should be an external HDD).
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :customInputDes
 
 :custominvalidletterbackDes
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. A drive with that letter is not connected. Please check the letter and try again.
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :customInputDes
 
 :quit
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. "Quitting..."
 TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :realend
 
 :end
