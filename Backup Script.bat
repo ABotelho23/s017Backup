@@ -9,15 +9,28 @@ TIMEOUT 10
 GOTO :realend
 
 :mainmenu
-echo ----------
-echo ----------
+echo ----------------------------------------------------------------------
+echo ----------------------------------------------------------------------
 echo MAIN MENU - What would you like to do?
+echo ----------------------------------------------------------------------
+echo ----------------------------------------------------------------------
 echo 1. Backup Data  - Used for standard User folders backup when unit can boot.
-echo 2. Migrate Data [experimental/testing] - Used to migrate a User folders backup created by this script back unto the newly setup unit;s User folders.
-echo 3. Migrate Directly from an Old PC's HDD [experimental/testing] - Used for when the old PC does not boot, and its HDD is docked to the new PC.
-echo 4. Clone folders [experimental/testing]- Simply clones the contents of two folders. Do NOT use to migrate User folders; this option does not have exclusions for files not meant to be migrated.
-echo 5. Backup Data (CUSTOM) [NOT AVAILABLE YET] - Used for backing up a PC's User folders when the PC doesn't boot. An external HDD is also required for this option.
-set /P backMigSel=What would you like to do? (Enter 1-5 or 'q'/'Q' to quit)
+echo ----------------------------------------------------------------------
+echo 2. Migrate Data [experimental/testing] - Used to migrate a User folders backup
+echo created by this script back unto the newly setup unit's User folders.
+echo ----------------------------------------------------------------------
+echo 3. Migrate Directly from an Old PC's HDD [experimental/testing] - Used for
+echo when the old PC does not boot, and its HDD is docked to the new PC.
+echo ----------------------------------------------------------------------
+echo 4. Clone folders [experimental/testing]- Simply clones the contents of two
+echo folders. Do NOT use to migrate User folders; this option does not have exclusions
+echo for files not meant to be migrated.
+echo ----------------------------------------------------------------------
+echo 5. Backup Data (CUSTOM) [NOT AVAILABLE YET] - Used for backing up a PC's User
+echo folders when the PC doesn't boot. An external HDD is also required for this option.
+echo ----------------------------------------------------------------------
+echo What would you like to do?
+set /P backMigSel=(Enter 1-5 or 'q'/'Q' to quit) 
 
 IF "%backMigSel%"=="1" GOTO :backup
 IF "%backMigSel%"=="2" GOTO :migration
