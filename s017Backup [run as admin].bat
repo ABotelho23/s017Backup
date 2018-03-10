@@ -2,6 +2,7 @@
 @echo off
 openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto :NotAdmin
+echo ----------------------------------------------------------------------
 echo Welcome to Staples Store #17 Tech Backup, Migrate and Folder Cloning script!
 goto :mainmenu
 :NotAdmin
@@ -10,25 +11,27 @@ TIMEOUT 10
 GOTO :realend
 
 :mainmenu
-echo ----------------------------------------------------------------------
-echo ----------------------------------------------------------------------
+echo ======================================================================
 echo MAIN MENU - What would you like to do?
-echo ----------------------------------------------------------------------
-echo ----------------------------------------------------------------------
+echo ======================================================================
 echo 1. Backup Data  - Used for standard User folders backup when unit can boot.
 echo ----------------------------------------------------------------------
-echo 2. Migrate Data [experimental/testing] - Used to migrate a User folders backup
-echo created by this script back unto the newly setup unit's User folders.
+echo 2. Migrate Data [experimental]
+echo Used to migrate a User folders backup created by this
+echo script back unto the newly setup unit's User folders.
 echo ----------------------------------------------------------------------
-echo 3. Migrate Directly from an Old PC's HDD [experimental/testing] - Used for
-echo when the old PC does not boot, and its HDD is docked to the new PC.
+echo 3. Migrate Directly from an Old PC's HDD [experimental]
+echo Used for when the old PC does not boot,
+echo and its HDD is docked to the new PC.
 echo ----------------------------------------------------------------------
-echo 4. Clone folders [experimental/testing]- Simply clones the contents of two
-echo folders. Do NOT use to migrate User folders; this option does not have exclusions
+echo 4. Clone folders [experimental]
+echo Simply clones the contents of two folders.
+echo Do NOT use to migrate User folders; this option does not have exclusions
 echo for files not meant to be migrated.
 echo ----------------------------------------------------------------------
-echo 5. Backup Data (CUSTOM) [NOT AVAILABLE YET] - Used for backing up a PC's User
-echo folders when the PC doesn't boot. An external HDD is also required for this option.
+echo 5. Backup Data (CUSTOM) [experimental]
+echo Used for backing up a PC's User folders when the PC doesn't boot.
+echo An external HDD is also required for this option.
 echo ----------------------------------------------------------------------
 echo What would you like to do?
 set /P backMigSel=(Enter 1-5 or 'q'/'Q' to quit)
@@ -130,7 +133,7 @@ IF NOT EXIST "%customDes%:\" GOTO :custominvalidletterbackDes
 mkdir "%customDes%:\StaplesBackup"
 mkdir "%customDes%:\StaplesBackup\Backup"
 mkdir "%customDes%:\StaplesBackup\Backup\Users"
-robocopy "%customSrc:\%" "%customDes%:\StaplesBackup\Backup\Users" /v /log:"%customDes%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%customSrc%:\Users\All Users" /xd "%customSrc%:\Default User" /xd "%customSrc%:\Users\Default" /xd "%customSrc%:\Users\DefaultAppPool" /xd "%customSrc%:\Users\Default.migrated"
+robocopy "%customSrc:\Users%" "%customDes%:\StaplesBackup\Backup\Users" /v /log:"%customDes%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%customSrc%:\Users\All Users" /xd "%customSrc%:\Default User" /xd "%customSrc%:\Users\Default" /xd "%customSrc%:\Users\DefaultAppPool" /xd "%customSrc%:\Users\Default.migrated"
 echo CUSTOM BACKUP COMPLETE. Please verify. Displaying log file.
 start "" "%customDes%:\StaplesBackup\backupLog.txt"
 GOTO :end
