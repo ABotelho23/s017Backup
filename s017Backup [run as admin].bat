@@ -44,7 +44,10 @@ IF "%backMigSel%"=="5" GOTO :custombackup
 IF "%backMigSel%"=="q" GOTO :quit
 IF "%backMigSel%"=="Q" GOTO :quit
 
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. That is not a valid selection, returning to main menu.
+TIMEOUT 3
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 GOTO :mainmenu
 
 :backup
