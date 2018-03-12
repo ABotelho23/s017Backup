@@ -4,9 +4,12 @@ openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto :NotAdmin
 echo. ----------------------------------------------------------------------
 echo. Welcome to Staples Store #17 Tech Backup, Migration and Folder Cloning script!
+echo. ----------------------------------------------------------------------
 goto :mainmenu
 :NotAdmin
-echo. PLEASE RUN AS ADMIN. Closing in 10 seconds.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+echo. PLEASE RUN AS ADMIN! Right-click script and click "Run as administrator" Closing in 10 seconds.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 TIMEOUT 10
 GOTO :realend
 
