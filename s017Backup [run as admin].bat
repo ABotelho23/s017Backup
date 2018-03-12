@@ -57,7 +57,9 @@ IF "%backDestLet%"=="c" GOTO :cantusecback
 IF "%backDestLet%"=="C" GOTO :cantusecback
 IF NOT EXIST "%backDestLet%:\" GOTO :invalidletterback
 
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. Valid selection. Starting Backup from C:\Users to "%backDestLet%:\StaplesBackup\Users" in 10 seconds.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 TIMEOUT 10
 echo. STARTING BACKUP NOW!
 
@@ -65,7 +67,9 @@ mkdir "%backDestLet%:\StaplesBackup"
 mkdir "%backDestLet%:\StaplesBackup\Backup"
 mkdir "%backDestLet%:\StaplesBackup\Backup\Users"
 robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Backup\Users" /v /log:"%backDestLet%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. BACKUP COMPLETE. Please verify. Displaying log file.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 start "" "%backDestLet%:\StaplesBackup\backupLog.txt"
 GOTO :end
 
@@ -76,13 +80,17 @@ IF "%migSrcLet%"=="C" GOTO :cantusecmig
 IF NOT EXIST "%migSrcLet%:\" GOTO :invalidlettermig
 IF NOT EXIST "%migSrcLet%:\StaplesBackup" GOTO :nobackupfound
 
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. Valid selection. Starting Migration from "%migSrcLet%:\StaplesBackup\Backup\Users" to "C:\Users" in 10 seconds.
 echo. Note: Migration is done to Users folder; if old user folder name is different from new user, unexpected results may occur.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 TIMEOUT 10
 echo. STARTING MIGRATION NOW!
 
 robocopy "%migSrcLet%:\StaplesBackup\Backup\Users" "C:\Users" /v /log:"C:\Users\migrationLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. MIGRATION COMPLETE. Displaying log file.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 start "" "C:\Users\migrationLog.txt"
 GOTO :end
 
@@ -93,13 +101,17 @@ IF "%oldSrcLet%"=="C" GOTO :cantusecold
 IF NOT EXIST "%oldSrcLet%:\" GOTO :invalidletterold
 IF NOT EXIST "%oldSrcLet%:\Users" GOTO :notoldhdd
 
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. Valid selection. Starting Migration from old PC "%oldSrcLet%:\Users" to "C:\Users" in 10 seconds.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 TIMEOUT 10
 echo. STARTING MIGRATION FROM OLD PC NOW!
 
 robocopy "%oldSrcLet%:\Users" "C:\Users" /v /log:"C:\Users\migrationOldPCLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%oldSrcLet%:\Users\All Users" /xd "%oldSrcLet%:\Default User" /xd "%oldSrcLet%:\Users\Default" /xd "%oldSrcLet%:\Users\DefaultAppPool" /xd "%oldSrcLet%:\Users\Default.migrated"
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. MIGRATION FROM OLD PC COMPLETE. Please verify. Displaying log file.
-start "" "C:\Users\migrationOldPCLog.txt"
+
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +start "" "C:\Users\migrationOldPCLog.txt"
 GOTO :end
 
 :clonefolders
@@ -111,12 +123,16 @@ IF NOT EXIST "%cloneSrc%" GOTO :cloneSrcNotExist
 set /P cloneDes=What is the destination folder? Please include drive letter in path as well as the colon, and use backslashes. Do not include last backslash.
 IF NOT EXIST "%cloneDes%" GOTO :cloneDesNotExist
 
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. Valid selections. Starting Cloning of "%cloneSrc%" to "%cloneDes%" in 10 seconds.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 TIMEOUT 10
 echo. STARTING CLONING NOW!
 
 robocopy "%cloneSrc%" "%cloneDes%" /v /log:"%cloneDes%\cloneLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. CLONING COMPLETE. Please verify. Displaying log file.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 start "" "%cloneDes%\cloneLog.txt"
 GOTO :end
 
@@ -138,7 +154,9 @@ mkdir "%customDes%:\StaplesBackup"
 mkdir "%customDes%:\StaplesBackup\Backup"
 mkdir "%customDes%:\StaplesBackup\Backup\Users"
 robocopy "%customSrc:\Users%" "%customDes%:\StaplesBackup\Backup\Users" /v /log:"%customDes%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%customSrc%:\Users\All Users" /xd "%customSrc%:\Default User" /xd "%customSrc%:\Users\Default" /xd "%customSrc%:\Users\DefaultAppPool" /xd "%customSrc%:\Users\Default.migrated"
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. CUSTOM BACKUP COMPLETE. Please verify. Displaying log file.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 start "" "%customDes%:\StaplesBackup\backupLog.txt"
 GOTO :end
 
