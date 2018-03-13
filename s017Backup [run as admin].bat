@@ -17,7 +17,8 @@ GOTO :realend
 echo. ======================================================================
 echo. MAIN MENU - What would you like to do?
 echo. ======================================================================
-echo. 1. Backup Data  - Used for standard User folders backup when unit can boot.
+echo. 1. Backup Data
+echo. Used for standard User folders backup when unit can boot.
 echo. ----------------------------------------------------------------------
 echo. 2. Migrate Data [experimental]
 echo. Used to migrate a User folders backup created by this
