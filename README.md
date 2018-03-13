@@ -1,5 +1,5 @@
 # s017Backup
-## This is an unofficial backup script designed from scratch for use in the Staples store #17. It creates a backup of User folders in Windows Vista-Windows 10, in a standard format. It also logs the backup (and any migrations) to ensure they have completed successfully. It primarily uses robocopy copy to perform the backup, with particular exclusions and parameters to ensure the optimal performance of the script.
+### This is an unofficial backup script designed from scratch for use in the Staples store #17. It creates a backup of User folders in Windows Vista-Windows 10, in a standard format. It also logs the backup (and any migrations) to ensure they have completed successfully. It primarily uses robocopy copy to perform the backup, with particular exclusions and parameters to ensure the optimal performance of the script.
 
 I started this because of a lack of proper tools to perform this task that are available as the workplace. Copy and pasting via File Explorer was both slow, needed constant intervention, and usually doesn't succeed 100%.
 
