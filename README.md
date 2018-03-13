@@ -18,5 +18,5 @@ Available options:
 4. Clone folders - Simply clones the contents of two folders. Do NOT use to migrate User folders; this option does not have exclusions for files not meant to be migrated.
 -This option is intended to clone two folders, regardless of where they may be. Its intended purpose is to move data which is not present in the User folders.
 
-echo. 5. Backup Data (CUSTOM) - Used for backing up a PC's User folders when the PC doesn't boot. An external HDD is also required for this option.
+5. Backup Data (CUSTOM) - Used for backing up a PC's User folders when the PC doesn't boot. An external HDD is also required for this option.
 -This option is the least likely. To be used when the HDD that is being backed up is not in a bootable state. Its intended purpose is to backup a PC's HDD using a second PC to perform the work.
