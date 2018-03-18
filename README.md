@@ -1,17 +1,17 @@
 # s017Backup
 ## Unofficial Staples Canada Store #17 Windows Backup and Migration script
 
-This is an unofficial backup script designed from scratch for use in the Staples store #17. It creates a backup of User folders in Windows Vista-Windows 10, in a standard format. It also logs the backup (and any migrations) to ensure they have completed successfully. It primarily uses robocopy copy to perform the backup, with particular exclusions and parameters to ensure the optimal performance of the script.
+This is an unofficial backup script designed from scratch for use in the Staples store #17. It creates a backup of User folders from Windows Vista right up to Windows 10, in a standard format. It also logs the backup (and any migrations) to ensure they have completed successfully. It primarily uses *robocopy* to perform the backup, with particular exclusions and parameters to ensure the optimal performance of the script.
 
-I started this because of a lack of proper tools to perform this task that are available as the workplace. Copy and pasting via File Explorer was both slow, needed constant intervention, and usually doesn't succeed 100%.
+I started this because of a lack of proper tools to perform this task that are available at the workplace. Copy and pasting via File Explorer was both slow, needed constant intervention, and usually doesn't succeed 100%. Robocopy has the ability to handle errors gracefully, as well as supply us with a log of the transfers that can be given to customers.
 
-I've made this script open source as it may be of good use to other techs, as well as to hopefully increase collaboration on best practices for a script like this.
+I've made this script available on GitHub.com as it may be of good use to other techs, as well as to hopefully increase collaboration on best practices for a script like this.
 
 Available options:
 
 **1. Backup Data**  - *Used for standard User folders backup when unit can boot.*
 
--This option is the base option for this script. A folder called "StaplesBackup" is created in the root directory of the selected drive, which contains the backup as well as the log file of the machine on which it is run.
+-This option is the primary option for this script. A folder called "StaplesBackup" is created in the root directory of the selected drive, which contains the backup as well as the log file of the machine on which it is run.
 
 **2. Migrate Data** - *Used to migrate a User folders backup created by this script back unto the newly setup unit's User folders.*
 
