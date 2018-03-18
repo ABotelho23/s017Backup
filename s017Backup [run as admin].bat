@@ -67,7 +67,11 @@ echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 TIMEOUT 10
 echo. STARTING BACKUP NOW!
 
-mkdir "%backDestLet%:\StaplesBackup"
+for /F "tokens=2" %%i in ('date /t') do set mydate=%%i
+set mydate=%mydate:/=-%
+set mytime=%time::=-%
+set foldername=StaplesBackup%mydate%-%mytime%
+mkdir "%backDestLet%:\%foldername%"
 mkdir "%backDestLet%:\StaplesBackup\Backup"
 mkdir "%backDestLet%:\StaplesBackup\Backup\Users"
 robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Backup\Users" /v /log+:"%backDestLet%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
