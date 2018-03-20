@@ -28,7 +28,7 @@ function PerfBackup
     param ($srcFolder, $dstFolder,$roboArgsYOrN,$jobType,$logLocation)
     cls
     Write-Host "Starting $jobType from $srcFolder to $dstFolder"
-    robocopy "$srcFolder" "$dstFolder" /v /log+:"%backDestLet%:\StaplesBackup\$jobTypeLog.txt" /e /zb /mt:4 /r:3 /w:5 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
+    robocopy "$srcFolder" "$dstFolder" /v /log+:"$logLocation\$jobTypeLogLog.txt" /e /zb /mt:4 /r:3 /w:5 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "netuser.dat.*" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
 
 }
 
@@ -46,6 +46,7 @@ do
             $date = $date.ToString("yyyy-MM-dd")
             New-Item -ItemType directory -Path "$backDstLet:\StaplesBackup-$date"
             PerfBackup "C:\Users" "$backDstLet:\StaplesBackup-$date\Backup\Users" "yes" "backup" "$backDstLet:\StaplesBackup-$date"
+
         } '2' {
             cls
             'You chose option #2'
