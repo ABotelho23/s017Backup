@@ -40,12 +40,20 @@ do
     {
         '1' {
             cls
-            'You chose option #1'
+            Write-Host "1. Backup Data selected."
             $backDstLet = Read-Host "What is the drive letter of the drive to put the backup unto?"
-            $date = Get-Date
-            $date = $date.ToString("yyyy-MM-dd")
-            New-Item -ItemType directory -Path "$backDstLet:\StaplesBackup-$date"
-            PerfBackup "C:\Users" "$backDstLet:\StaplesBackup-$date\Backup\Users" "yes" "backup" "$backDstLet:\StaplesBackup-$date"
+            if ((Test-Path "$backDstLet:\") -eq "False") {
+                Write-Host "A drive with that letter is not connected. Please check the letter and try again."
+            } if ("$backDstLet" -ne "c") -or ("$backDstLet" -ne "C"){
+                Write-Host "C: drive cannot be used as a destination, please select another drive."
+            } else {
+                cls
+                Write-Host "Valid selection. Starting Backup."
+                $date = Get-Date
+                $date = $date.ToString("yyyy-MM-dd")
+                New-Item -ItemType directory -Path "$backDstLet:\StaplesBackup-$date"
+                PerfBackup "C:\Users" "$backDstLet:\StaplesBackup-$date\Backup\Users" "yes" "backup" "$backDstLet:\StaplesBackup-$date"
+            }
 
         } '2' {
             cls
