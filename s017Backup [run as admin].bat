@@ -120,7 +120,7 @@ GOTO :end
 
 :clonefolders
 :inputCloneSrc
-set /P customSrc=What is the source folder? Please include drive letter in path as well as the colon, and use backslashes.
+set /P cloneSrc=What is the source folder? Please include drive letter in path as well as the colon, and use backslashes.
 IF NOT EXIST "%cloneSrc%" GOTO :cloneSrcNotExist
 
 :inputCloneDes
