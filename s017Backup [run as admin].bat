@@ -4,6 +4,7 @@ openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto :NotAdmin
 echo. ----------------------------------------------------------------------
 echo. Welcome to Staples Store #17 Tech Backup, Migration and Folder Cloning script!
+echo. See https://github.com/ABotelho23/s017Backup for more information
 echo. ----------------------------------------------------------------------
 goto :mainmenu
 :NotAdmin
