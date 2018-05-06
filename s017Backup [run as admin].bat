@@ -5,6 +5,7 @@ if NOT %ERRORLEVEL% EQU 0 goto :NotAdmin
 echo. ----------------------------------------------------------------------
 echo. Welcome to Staples Store #17 Tech Backup, Migration and Folder Cloning script!
 echo. See https://github.com/ABotelho23/s017Backup for more information
+echo. Created by Alex Botelho with the help of Aaron Langlois and Thomas Belway
 echo. ----------------------------------------------------------------------
 goto :mainmenu
 :NotAdmin
