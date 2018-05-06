@@ -158,7 +158,7 @@ IF NOT EXIST "%customDes%:\" GOTO :custominvalidletterbackDes
 mkdir "%customDes%:\StaplesBackup"
 mkdir "%customDes%:\StaplesBackup\Backup"
 mkdir "%customDes%:\StaplesBackup\Backup\Users"
-robocopy "%customSrc:\Users%" "%customDes%:\StaplesBackup\Backup\Users" /v /log+:"%customDes%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%customSrc%:\Users\All Users" /xd "%customSrc%:\Default User" /xd "%customSrc%:\Users\Default" /xd "%customSrc%:\Users\DefaultAppPool" /xd "%customSrc%:\Users\Default.migrated"
+robocopy "%customSrc%:\Users" "%customDes%:\StaplesBackup\Backup\Users" /v /log+:"%customDes%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%customSrc%:\Users\All Users" /xd "%customSrc%:\Default User" /xd "%customSrc%:\Users\Default" /xd "%customSrc%:\Users\DefaultAppPool" /xd "%customSrc%:\Users\Default.migrated"
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. CUSTOM BACKUP COMPLETE. Please verify. Displaying log file.
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
