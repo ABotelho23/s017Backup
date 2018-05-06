@@ -72,7 +72,7 @@ echo. STARTING BACKUP NOW!
 mkdir "%backDestLet%:\StaplesBackup"
 mkdir "%backDestLet%:\StaplesBackup\Backup"
 mkdir "%backDestLet%:\StaplesBackup\Backup\Users"
-robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Backup\Users" /v /log+:"%backDestLet%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
+robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Backup\Users" /v /log+:"%backDestLet%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NTUSER.DAT" /xf "NTUSER.DAT*" /xf "NTUSER.DAT.*" /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. BACKUP COMPLETE. Please verify. Displaying log file.
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
@@ -113,7 +113,7 @@ echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 TIMEOUT 10
 echo. STARTING MIGRATION FROM OLD PC NOW!
 
-robocopy "%oldSrcLet%:\Users" "C:\Users" /v /log+:"C:\Users\migrationOldPCLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%oldSrcLet%:\Users\All Users" /xd "%oldSrcLet%:\Default User" /xd "%oldSrcLet%:\Users\Default" /xd "%oldSrcLet%:\Users\DefaultAppPool" /xd "%oldSrcLet%:\Users\Default.migrated"
+robocopy "%oldSrcLet%:\Users" "C:\Users" /v /log+:"C:\Users\migrationOldPCLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NTUSER.DAT" /xf "NTUSER.DAT*" /xf "NTUSER.DAT.*" /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%oldSrcLet%:\Users\All Users" /xd "%oldSrcLet%:\Default User" /xd "%oldSrcLet%:\Users\Default" /xd "%oldSrcLet%:\Users\DefaultAppPool" /xd "%oldSrcLet%:\Users\Default.migrated"
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. MIGRATION FROM OLD PC COMPLETE. Please verify. Displaying log file.
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
@@ -159,7 +159,7 @@ IF NOT EXIST "%customDes%:\" GOTO :custominvalidletterbackDes
 mkdir "%customDes%:\StaplesBackup"
 mkdir "%customDes%:\StaplesBackup\Backup"
 mkdir "%customDes%:\StaplesBackup\Backup\Users"
-robocopy "%customSrc%:\Users" "%customDes%:\StaplesBackup\Backup\Users" /v /log+:"%customDes%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%customSrc%:\Users\All Users" /xd "%customSrc%:\Default User" /xd "%customSrc%:\Users\Default" /xd "%customSrc%:\Users\DefaultAppPool" /xd "%customSrc%:\Users\Default.migrated"
+robocopy "%customSrc%:\Users" "%customDes%:\StaplesBackup\Backup\Users" /v /log+:"%customDes%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NTUSER.DAT" /xf "NTUSER.DAT*" /xf "NTUSER.DAT.*" /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%customSrc%:\Users\All Users" /xd "%customSrc%:\Default User" /xd "%customSrc%:\Users\Default" /xd "%customSrc%:\Users\DefaultAppPool" /xd "%customSrc%:\Users\Default.migrated"
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. CUSTOM BACKUP COMPLETE. Please verify. Displaying log file.
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
