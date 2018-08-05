@@ -193,6 +193,12 @@ IF NOT EXIST "%customDes%:\" GOTO :custominvalidletterbackDes
 
 IF NOT EXIST "%customDes%:\Users" GOTO :xpcustombackup
 
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+echo. Valid selection. Starting Custom Backup from %customSrc%:\Users to "%customDes%:\StaplesBackup\Users" in 10 seconds.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+TIMEOUT 10
+echo. STARTING CUSTOM BACKUP NOW!
+
 mkdir "%customDes%:\StaplesBackup"
 mkdir "%customDes%:\StaplesBackup\Backup"
 mkdir "%customDes%:\StaplesBackup\Backup\Users"
