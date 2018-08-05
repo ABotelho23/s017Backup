@@ -63,6 +63,8 @@ IF "%backDestLet%"=="c" GOTO :cantusecback
 IF "%backDestLet%"=="C" GOTO :cantusecback
 IF NOT EXIST "%backDestLet%:\" GOTO :invalidletterback
 
+IF NOT EXIST "C:\Users" GOTO :xpBackup
+
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. Valid selection. Starting Backup from C:\Users to "%backDestLet%:\StaplesBackup\Users" in 10 seconds.
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
@@ -73,6 +75,23 @@ mkdir "%backDestLet%:\StaplesBackup"
 mkdir "%backDestLet%:\StaplesBackup\Backup"
 mkdir "%backDestLet%:\StaplesBackup\Backup\Users"
 robocopy "C:\Users" "%backDestLet%:\StaplesBackup\Backup\Users" /v /log+:"%backDestLet%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NTUSER.DAT" /xf "NTUSER.DAT*" /xf "NTUSER.DAT.*" /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xf "desktop.ini" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Users\All Users" /xd "C:\Default User" /xd "C:\Users\Default" /xd "C:\Users\DefaultAppPool" /xd "C:\Users\Default.migrated"
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+echo. BACKUP COMPLETE. Please verify. Displaying log file.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+start "" "%backDestLet%:\StaplesBackup\backupLog.txt"
+GOTO :end
+
+:xpBackup
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+echo. Valid selection. XP Installation detected. Starting Backup from C:\Documents and Settings to "%backDestLet%:\StaplesBackup\Users" in 10 seconds.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+TIMEOUT 10
+echo. STARTING XP BACKUP NOW!
+
+mkdir "%backDestLet%:\StaplesBackup"
+mkdir "%backDestLet%:\StaplesBackup\Backup"
+mkdir "%backDestLet%:\StaplesBackup\Backup\Users"
+robocopy "C:\Documents and Settings" "%backDestLet%:\StaplesBackup\Backup\Users" /v /log+:"%backDestLet%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NTUSER.DAT" /xf "NTUSER.DAT*" /xf "NTUSER.DAT.*" /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xf "desktop.ini" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "C:\Documents and Settings\All Users" /xd "C:\Documents and Settings\Default User" /xd "C:\Documents and Settings\Default" /xd "C:\Documents and Settings\DefaultAppPool" /xd "C:\Documents and Settings\Default.migrated"
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. BACKUP COMPLETE. Please verify. Displaying log file.
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
