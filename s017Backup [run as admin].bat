@@ -191,12 +191,31 @@ IF "%customDes%"=="c" GOTO :customcantusecbackDes
 IF "%customDes%"=="C" GOTO :customcantusecbackDes
 IF NOT EXIST "%customDes%:\" GOTO :custominvalidletterbackDes
 
+IF NOT EXIST "%customDes%:Users" GOTO :xpcustombackup
+
 mkdir "%customDes%:\StaplesBackup"
 mkdir "%customDes%:\StaplesBackup\Backup"
 mkdir "%customDes%:\StaplesBackup\Backup\Users"
 robocopy "%customSrc%:\Users" "%customDes%:\StaplesBackup\Backup\Users" /v /log+:"%customDes%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NTUSER.DAT" /xf "NTUSER.DAT*" /xf "NTUSER.DAT.*" /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xf "desktop.ini" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%customSrc%:\Users\All Users" /xd "%customSrc%:\Default User" /xd "%customSrc%:\Users\Default" /xd "%customSrc%:\Users\DefaultAppPool" /xd "%customSrc%:\Users\Default.migrated"
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. CUSTOM BACKUP COMPLETE. Please verify. Displaying log file.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+start "" "%customDes%:\StaplesBackup\backupLog.txt"
+GOTO :end
+
+:xpcustombackup
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+echo. Valid selection. XP Installation detected. Starting Custom Backup from %customSrc%:\Documents and Settings to "%customDes%:\StaplesBackup\Users" in 10 seconds.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+TIMEOUT 10
+echo. STARTING XP CUSTOM BACKUP NOW!
+
+mkdir "%customDes%:\StaplesBackup"
+mkdir "%customDes%:\StaplesBackup\Backup"
+mkdir "%customDes%:\StaplesBackup\Backup\Users"
+robocopy "%customSrc%:\Documents and Settings" "%customDes%:\StaplesBackup\Backup\Users" /v /log+:"%customDes%:\StaplesBackup\backupLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NTUSER.DAT" /xf "NTUSER.DAT*" /xf "NTUSER.DAT.*" /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xf "desktop.ini" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%customSrc%:\Documents and Settings\All Users" /xd "%customSrc%:\Documents and Settings\Default User" /xd "%customSrc%:\Documents and Settings\Default" /xd "%customSrc%:\Documents and Settings\DefaultAppPool" /xd "%customSrc%:\Documents and Settings\Default.migrated"
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+echo. CUSTOM XP BACKUP COMPLETE. Please verify. Displaying log file.
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 start "" "%customDes%:\StaplesBackup\backupLog.txt"
 GOTO :end
