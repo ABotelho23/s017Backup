@@ -126,6 +126,8 @@ IF "%oldSrcLet%"=="C" GOTO :cantusecold
 IF NOT EXIST "%oldSrcLet%:\" GOTO :invalidletterold
 IF NOT EXIST "%oldSrcLet%:\Users" GOTO :notoldhdd
 
+IF NOT EXIST "C:\Users" GOTO :xpmigrateoldpc
+
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. Valid selection. Starting Migration from old PC "%oldSrcLet%:\Users" to "C:\Users" in 10 seconds.
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
@@ -133,6 +135,20 @@ TIMEOUT 10
 echo. STARTING MIGRATION FROM OLD PC NOW!
 
 robocopy "%oldSrcLet%:\Users" "C:\Users" /v /log+:"C:\Users\migrationOldPCLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NTUSER.DAT" /xf "NTUSER.DAT*" /xf "NTUSER.DAT.*" /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xf "desktop.ini" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%oldSrcLet%:\Users\All Users" /xd "%oldSrcLet%:\Default User" /xd "%oldSrcLet%:\Users\Default" /xd "%oldSrcLet%:\Users\DefaultAppPool" /xd "%oldSrcLet%:\Users\Default.migrated"
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+echo. MIGRATION FROM OLD PC COMPLETE. Please verify. Displaying log file.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+start "" "C:\Users\migrationOldPCLog.txt"
+GOTO :end
+
+:xpmigrateoldpc
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+echo. Valid selection. XP Installation Detected. Starting Migration from old PC "%oldSrcLet%:\Documents and Settings" to "C:\Users" in 10 seconds.
+echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+TIMEOUT 10
+echo. STARTING XP MIGRATION FROM OLD PC NOW!
+
+robocopy "%oldSrcLet%:\Documents and Settings" "C:\Users" /v /log+:"C:\Users\migrationOldPCLog.txt" /e /zb /mt:4 /r:3 /w:3 /copy:dt /tee /eta /xj /xf "NTUSER.DAT" /xf "NTUSER.DAT*" /xf "NTUSER.DAT.*" /xf "NETUSER.DAT" /xf "NETUSER.DAT*" /xf "dat.*" /xf "desktop.ini" /xd "OneDrive" /xd "Local Settings" /xd "AppData" /xd "Application Data" /xd "%oldSrcLet%:\Documents and Settings\All Users" /xd "%oldSrcLet%:\Documents and Settings\Default User" /xd "%oldSrcLet%:\Documents and Settings\Default" /xd "%oldSrcLet%:\Documents and Settings\DefaultAppPool" /xd "%oldSrcLet%:\Documents and Settings\Default.migrated"
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. MIGRATION FROM OLD PC COMPLETE. Please verify. Displaying log file.
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
