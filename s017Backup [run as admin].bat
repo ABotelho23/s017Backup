@@ -126,7 +126,7 @@ IF "%oldSrcLet%"=="C" GOTO :cantusecold
 IF NOT EXIST "%oldSrcLet%:\" GOTO :invalidletterold
 IF NOT EXIST "%oldSrcLet%:\Users" GOTO :notoldhdd
 
-IF NOT EXIST "C:\Users" GOTO :xpmigrateoldpc
+IF NOT EXIST "%oldSrcLet%:\Users" GOTO :xpmigrateoldpc
 
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. Valid selection. Starting Migration from old PC "%oldSrcLet%:\Users" to "C:\Users" in 10 seconds.
