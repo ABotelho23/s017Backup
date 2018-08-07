@@ -30,6 +30,6 @@ do
     "Quit")
       break
       ;;
-    *) printf "Invalid option: ""$REPLY" ";;
+    *) printf "Invalid option: $REPLY ";;
   esac
 done
