@@ -7,7 +7,7 @@ printf '%s'"--------------------------------------------------------------------
 
 printf "\n========== MAIN MENU ==========\n"
 
-PS3='What would you like to do?'
+PS3='\nWhat would you like to do?'
 options=("Backup Users Folder Only (Windows)" "Backup Users Folder Only (MacOS/OSX)" "Backup Users Folder Only (Linux/GNU)" "Backup Entire Drive" "Backup Specific Folder" "Quit")
 select opt in "${options[@]}"
 do
@@ -30,6 +30,6 @@ do
     "Quit")
       break
       ;;
-    *) printf "Invalid option $REPLY";;
+    *) printf "Invalid option: ""$REPLY" ";;
   esac
 done
