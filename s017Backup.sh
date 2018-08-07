@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 printf '%s'"----------------------------------------------------------------------\n"
 printf "Welcome to Staples Store #17 Tech Backup, Migration and Folder Cloning script!\n"
 printf "See https://github.com/ABotelho23/s017Backup for more information\n"
