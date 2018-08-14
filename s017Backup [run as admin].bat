@@ -191,7 +191,7 @@ IF "%customDes%"=="c" GOTO :customcantusecbackDes
 IF "%customDes%"=="C" GOTO :customcantusecbackDes
 IF NOT EXIST "%customDes%:\" GOTO :custominvalidletterbackDes
 
-IF NOT EXIST "%customDes%:\Users" GOTO :xpcustombackup
+IF NOT EXIST "%customSrc%:\Users" GOTO :xpcustombackup
 
 echo. + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
 echo. Valid selection. Starting Custom Backup from %customSrc%:\Users to "%customDes%:\StaplesBackup\Users" in 10 seconds.
