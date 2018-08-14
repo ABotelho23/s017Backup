@@ -8,26 +8,37 @@ printf '%s'"--------------------------------------------------------------------
 printf "\n========== MAIN MENU ==========\n"
 
 PS3='What would you like to do? '
-options=("Backup Users Folder Only (Windows)" "Backup Users Folder Only (MacOS/OSX)" "Backup Users Folder Only (Linux/GNU)" "Backup Entire Drive" "Backup Specific Folder" "Quit")
+options=("Backup Users Folder Only (Windows)" "Backup Users Folder Only (MacOS/OSX)" "Backup Users Folder Only (GNU/Linux)" "Backup Entire Drive" "Backup Specific Folder" "Quit")
 select opt in "${options[@]}"
 do
   case $opt in
     "Backup Users Folder Only (Windows)")
       printf "Starting Backup of Windows Users folder..."
+      mkdir "/media/StaplesBackup"
+      rsync ...
       ;;
     "Backup Users Folder Only (MacOS/OSX)")
       printf "Starting Backup of MacOS Users folder..."
+      ---check if on MacOS or Linux (home folder or Users folder)
+      rsync ... MacOS
+      or
+      rsync ... Linux
       ;;
-    "Backup Users Folder Only (Linux/GNU)")
-      printf "Starting Backup of Linux/GNU home folder..."
+    "Backup Users Folder Only (GNU/Linux)")
+      printf "Starting Backup of GNU/Linux home folder..."
+      rsync ...
       ;;
     "Backup Entire Drive")
       printf "Starting Backup of Selected Drive..."
+      rsync /
+      rsync ...
       ;;
     "Backup Specific Folder")
       printf "Start Backup of Specified Drive..."
+      rsync ...
       ;;
     "Quit")
+      printf "Quitting..."
       break
       ;;
     *) printf "\nInvalid option: $REPLY \n";;
