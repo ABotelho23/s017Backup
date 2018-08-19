@@ -37,7 +37,8 @@ do
       if [ $os_check = "MacOS" ]
       then
         printf "Starting Backup of MacOS Users folder..."
-        rsync ... MacOS
+        #ask which Volume it should be backed up to
+        rsync --verbose --recursive --human-readable --progress --log-file=""/Volumes/BACKUPDRIVE/StaplesBackup/backupLog.txt" --exclude=.cache --exclude=.Trash --exclude=.plist --exclude=Library --exclude=.DS_Store --exclude=Sites --exclude=AirPort.networkConnect --exclude=.CFUserTextEncoding  --exclude=.cups /Users/ /Volumes/BACKUPDRIVE/StaplesBackup/Backup/Users
       elif [ $os_check = "Linux" ]
       then
         printf "Starting Backup of GNU/Linux home folder"
