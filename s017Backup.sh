@@ -46,15 +46,25 @@ do
         printf "Unsure how OS detection was bypassed. Exiting in 5 seconds."
         sleep 5
         exit 1
-
       fi
       ;;
-    "Backup Entire Drive")
-      printf "Starting Backup of Selected Drive..."
-      rsync /
-      rsync ...
+    "Backup Entire Partition")
+      if [ $os_check = "MacOS" ]
+      then
+        read -p "What is the Volumes name of the partition to backup?" inputbackuppartition
+        rsync inputbackuppartition
+      elif [ $os_check = "Linux" ]
+      then
+        read -p "What is the mount point of the partition to backup?" inputbackuppartition
+        rsync inputbackuppartition
+      else
+        printf "Unsure how OS detection was bypassed. Exiting in 5 seconds."
+        sleep 5
+        exit 1
+      fi
       ;;
     "Backup Specific Folder")
+      read -p 'What is the full path of the folder to backup? ' inputbackupfolder
       printf "Start Backup of Specified Drive..."
       rsync ...
       ;;
