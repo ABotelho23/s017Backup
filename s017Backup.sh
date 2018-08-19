@@ -24,7 +24,7 @@ printf '%s'"--------------------------------------------------------------------
 printf "\n========== MAIN MENU ==========\n"
 printf "OS: $os_check detected.\n"
 PS3='What would you like to do? '
-options=("Backup Users Folder Only (Windows)" "Backup Users Folder Only (MacOS/OSX)" "Backup Users Folder Only (GNU/Linux)" "Backup Entire Drive" "Backup Specific Folder" "Quit")
+options=("Backup Users Folder Only (Windows)" "Backup Users Folder Only (MacOS/OSX or GNU/Linux)" "Backup Entire Drive" "Backup Specific Folder" "Quit")
 select opt in "${options[@]}"
 do
   case $opt in
@@ -33,16 +33,21 @@ do
       mkdir "/media/StaplesBackup"
       rsync ...
       ;;
-    "Backup Users Folder Only (MacOS/OSX)")
-      printf "Starting Backup of MacOS Users folder..."
-      #check if on MacOS or Linux (home folder or Users folder)
-      rsync ... MacOS
-      or
-      rsync ... Linux
-      ;;
-    "Backup Users Folder Only (GNU/Linux)")
-      printf "Starting Backup of GNU/Linux home folder..."
-      rsync ...
+    "Backup Users Folder Only (MacOS/OSX or GNU/Linux)")
+      if [ $os_check = "MacOS" ]
+      then
+        printf "Starting Backup of MacOS Users folder..."
+        rsync ... MacOS
+      elif [ $os_check = "Linux" ]
+      then
+        printf "Starting Backup of GNU/Linux home folder"
+        rsync ... Linux
+      else
+        printf "Unsure how OS detection was bypassed. Exiting in 5 seconds."
+        sleep 5
+        exit 1
+
+      fi
       ;;
     "Backup Entire Drive")
       printf "Starting Backup of Selected Drive..."
