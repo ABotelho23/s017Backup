@@ -45,7 +45,7 @@ do
         mkdir /Volumes/$backupDes
         mkdir /Volumes/$backupDes/StaplesBackup
         mkdir /Volumes/$backupDes/StaplesBackup/Backup
-        rsync --verbose --recursive --human-readable --progress --log-file="/Volumes/$backupDes/StaplesBackup/backupLog.txt" --exclude=.cache --exclude=.Trash --exclude=.plist --exclude=Library --exclude=.DS_Store --exclude=Sites --exclude=AirPort.networkConnect --exclude=.CFUserTextEncoding  --exclude=.cups "/Users/" "/Volumes/$backupDes/StaplesBackup/Backup/Users"
+        rsync --verbose --recursive --human-readable --progress --log-file="/Volumes/$backupDes/StaplesBackup/backupLog.txt" --exclude=.cache --exclude=.Trash --exclude=.bash_history --exclude=.bash_sessions --exclude=.plist --exclude=Library --exclude=.DS_Store --exclude=Sites --exclude=AirPort.networkConnect --exclude=.CFUserTextEncoding  --exclude=.cups "/Users/" "/Volumes/$backupDes/StaplesBackup/Backup/Users"
       elif [ $os_check = "Linux" ]
       then
         printf "ERROR: LINUX BACKUP NOT AVAILABLE YET."
