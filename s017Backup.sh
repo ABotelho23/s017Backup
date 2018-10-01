@@ -24,7 +24,7 @@ printf '%s'"--------------------------------------------------------------------
 printf "\n========== MAIN MENU ==========\n"
 printf "OS: $os_check detected.\n"
 PS3='What would you like to do? '
-options=("Backup Users/Home Folder Only" "Migrate from an existing backup" "Backup Entire Drive" "Backup Specific Folder" "Quit")
+options=("Backup Users/Home Folder Only" "Migrate from an existing backup" "Migrate directly from Windows" "Migrate directly from MacOS" "Quit")
 select opt in "${options[@]}"
 do
   case $opt in
@@ -34,7 +34,7 @@ do
       then
         clear
         while [ "$dirExists" != "true" ]; do
-          printf "Available drives:"
+          printf "Available drives: \n"
           ls /Volumes
           read -p 'Which volume from the list is the drive to place Backup unto? (Names are case-sensitive!) ' backupDes
           if [ -d "/Volumes/$backupDes" ]; then
@@ -75,11 +75,23 @@ do
       break
       ;;
 
-    "Backup Entire Partition")
-      if [ $os_check = "MacOS" ]
-      then
-        read -p "What is the Volumes name of the partition to backup?" inputbackuppartition
-        rsync inputbackuppartition
+    "Migrate directly from Windows")
+    echo "Migrate directly from Windows selected."
+    if [ $os_check = "MacOS" ]
+    then
+      clear
+      while [ "$dirExists" != "true" ]; do
+        printf "Available drives: \n"
+        ls /Volumes
+        read -p 'Which volume from the list is the Windows drive to migrate? (Names are case-sensitive!) ' migWinSrc
+        if [ -d "/Volumes/$migWinSrc" ]; then
+        dirExists="true"
+        fi
+      done
+      printf "Starting migration directly from select Windows drive..."
+      mkdir /Users/$USER/StaplesMigration
+      mkdir /Users/$USER/StaplesMigration/Migration
+      rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/directMigrationLog.txt" --exclude="NTUSER.DAT" --exclude="NETUSER.DAT" --exclude="ntuser.dat" --exclude="netuser.dat" --exclude="*.dat.*" --exclude="*.DAT.*" --exclude="All Users" --exclude="AppData" --exclude="Application Data" --exclude="Default User" --exclude="Default" --exclude="DefaultAppPool" --exclude="Default.migrated" --exclude="desktop.ini" "/Volumes/$migWinSrc/Users" "/Users/$USER/StaplesMigration/Migration/Users"
       elif [ $os_check = "Linux" ]
       then
         read -p "What is the mount point of the partition to backup?" inputbackuppartition
