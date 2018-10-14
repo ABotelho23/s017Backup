@@ -123,7 +123,7 @@ do
       printf "Starting migration directly from select MacOS drive to /Users/$USER/StaplesMigration"
       mkdir /Users/$USER/StaplesMigration
       mkdir /Users/$USER/StaplesMigration/Migration
-      rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/directMigrationLog.txt" --exclude=.cache --exclude=.Trash --exclude=.bash_history --exclude=.bash_sessions --exclude=.plist --exclude=Library --exclude=.DS_Store --exclude=Sites --exclude=AirPort.networkConnect --exclude=.CFUserTextEncoding  --exclude=.cups "/Volumes/$migMacSrc/Users" "/Users/$USER/StaplesMigration/Migration/Users"
+      rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/directMigrationLog.txt" --exclude=.cache --exclude=.Trash --exclude=.bash_history --exclude=.bash_sessions --exclude=.plist --exclude=Library --exclude=.DS_Store --exclude=Sites --exclude=AirPort.networkConnect --exclude=.CFUserTextEncoding  --exclude=.cups "/Volumes/$migMacSrc/Users" "/Users/$USER/StaplesMigration/Migration"
       elif [ $os_check = "Linux" ]
       then
         printf "Linux not yet supported."
