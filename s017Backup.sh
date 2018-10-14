@@ -94,7 +94,7 @@ do
       printf "Starting migration directly from selected Windows drive to /Users/$USER/StaplesMigration."
       mkdir /Users/$USER/StaplesMigration
       mkdir /Users/$USER/StaplesMigration/Migration
-      printf "Migrating from /Volumes/$migWinSrc/Users to /Users/$USER/StaplesMigration" >> /Users/$USER/StaplesMigration/directMigrationLog.txt
+      printf "Migrating from /Volumes/$migWinSrc/Users to /Users/$USER/StaplesMigration\n" >> /Users/$USER/StaplesMigration/directMigrationLog.txt
       rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/directMigrationLog.txt" --exclude="NTUSER.DAT" --exclude="NETUSER.DAT" --exclude="ntuser.dat" --exclude="netuser.dat" --exclude="*.dat.*" --exclude="*.DAT.*" --exclude="All Users" --exclude="AppData" --exclude="Application Data" --exclude="Default User" --exclude="Default" --exclude="DefaultAppPool" --exclude="Default.migrated" --exclude="desktop.ini" "/Volumes/$migWinSrc/Users" "/Users/$USER/StaplesMigration/Migration"
       elif [ $os_check = "Linux" ]
       then
@@ -124,7 +124,7 @@ do
       printf "Starting migration directly from select MacOS drive to /Users/$USER/StaplesMigration"
       mkdir /Users/$USER/StaplesMigration
       mkdir /Users/$USER/StaplesMigration/Migration
-      printf "Migrating from /Volumes/$migMacSrc/Users to /Users/$USER/StaplesMigration" >> /Users/$USER/StaplesMigration/directMigrationLog.txt
+      printf "Migrating from /Volumes/$migMacSrc/Users to /Users/$USER/StaplesMigration\n" >> /Users/$USER/StaplesMigration/directMigrationLog.txt
       rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/directMigrationLog.txt" --exclude=.cache --exclude=.Trash --exclude=.bash_history --exclude=.bash_sessions --exclude=.plist --exclude=Library --exclude=.DS_Store --exclude=Sites --exclude=AirPort.networkConnect --exclude=.CFUserTextEncoding  --exclude=.cups "/Volumes/$migMacSrc/Users" "/Users/$USER/StaplesMigration/Migration"
       elif [ $os_check = "Linux" ]
       then
