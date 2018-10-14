@@ -10,13 +10,14 @@ then
   os_check="MacOS"
 
 else
-  printf "Sorry, your OS is not supported. Exiting in 5 seconds."
+  printf "Sorry, there are no plans to support your OS. Exiting in 5 seconds."
   sleep 5
   exit 1
 fi
 
 printf '%s'"----------------------------------------------------------------------\n"
 printf "Welcome to Staples Store #17 Tech Backup, Migration and Folder Cloning script!\n"
+printf "This version of the script is primarily designed for MacOS and Linux. Linux support is coming soon."
 printf "See https://github.com/ABotelho23/s017Backup for more information\n"
 printf "Created by Alex Botelho with the help of Aaron Langlois and Thomas Belway\n"
 printf '%s'"----------------------------------------------------------------------\n"
@@ -24,12 +25,12 @@ printf '%s'"--------------------------------------------------------------------
 printf "\n========== MAIN MENU ==========\n"
 printf "OS: $os_check detected.\n"
 PS3='What would you like to do? '
-options=("Backup Users/Home Folder Only" "Migrate from an existing backup" "Migrate directly from Windows" "Migrate directly from MacOS" "Quit")
+options=("Backup Users/Home Folder Only" "Migrate From an Existing Backup" "Migrate directly from Windows" "Migrate directly from MacOS" "Quit")
 select opt in "${options[@]}"
 do
   case $opt in
     "Backup Users/Home Folder Only")
-      echo "Backup selected."
+      echo "Backup Users/Home Folder Only selected."
       if [ $os_check = "MacOS" ]
       then
         clear
@@ -48,8 +49,9 @@ do
         rsync --verbose --recursive --human-readable --progress -u --log-file="/Volumes/$backupDes/StaplesBackup/backupLog.txt" --exclude=.cache --exclude=.Trash --exclude=.bash_history --exclude=.bash_sessions --exclude=.plist --exclude=Library --exclude=.DS_Store --exclude=Sites --exclude=AirPort.networkConnect --exclude=.CFUserTextEncoding  --exclude=.cups "/Users/" "/Volumes/$backupDes/StaplesBackup/Backup/Users"
       elif [ $os_check = "Linux" ]
       then
-        printf "ERROR: LINUX BACKUP NOT AVAILABLE YET."
-        #rsync ... Linux
+        printf "Linux not yet supported."
+        sleep 5
+        break
       else
         printf "Unsure how OS detection was bypassed. Exiting in 5 seconds."
         sleep 5
@@ -58,15 +60,16 @@ do
       break
       ;;
 
-    "Migrate from an existing backup")
+    "Migrate From an Existing Backup")
       if [ $os_check = "MacOS" ]
       then
-        printf "Not available yet."
+        printf "Not available yet. Work in progress."
         #INPUT NAME OF DRIVE TO MIGRATE
       elif [ $os_check = "Linux" ]
       then
-        printf "Not available yet."
-        #INPUT NAME OF DRIVE TO MIGRATE
+        printf "Linux not yet supported."
+        sleep 5
+        break
       else
         printf "Unsure how OS detection was bypassed. Exiting in 5 seconds."
         sleep 5
@@ -88,14 +91,15 @@ do
         dirExists="true"
         fi
       done
-      printf "Starting migration directly from select Windows drive..."
+      printf "Starting migration directly from selected Windows drive to /Users/$USER/StaplesMigration."
       mkdir /Users/$USER/StaplesMigration
       mkdir /Users/$USER/StaplesMigration/Migration
       rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/directMigrationLog.txt" --exclude="NTUSER.DAT" --exclude="NETUSER.DAT" --exclude="ntuser.dat" --exclude="netuser.dat" --exclude="*.dat.*" --exclude="*.DAT.*" --exclude="All Users" --exclude="AppData" --exclude="Application Data" --exclude="Default User" --exclude="Default" --exclude="DefaultAppPool" --exclude="Default.migrated" --exclude="desktop.ini" "/Volumes/$migWinSrc/Users" "/Users/$USER/StaplesMigration/Migration/Users"
       elif [ $os_check = "Linux" ]
       then
-        read -p "What is the mount point of the partition to backup?" inputbackuppartition
-        rsync inputbackuppartition
+        printf "Linux not yet supported."
+        sleep 5
+        break
       else
         printf "Unsure how OS detection was bypassed. Exiting in 5 seconds."
         sleep 5
@@ -103,10 +107,34 @@ do
       fi
       break
       ;;
-    "Backup Specific Folder")
-      read -p 'What is the full path of the folder to backup? ' inputbackupfolder
-      printf "Start Backup of Specified Drive..."
-      rsync ...
+    "Migrate directly from MacOS")
+    echo "Migrate directly from MacOS selected."
+    if [ $os_check = "MacOS" ]
+    then
+      clear
+      while [ "$dirExists" != "true" ]; do
+        printf "Available drives: \n"
+        ls /Volumes
+        read -p 'Which volume from the list is the MacOS drive to migrate? (Names are case-sensitive!) ' migMacSrc
+        if [ -d "/Volumes/$migMacSrc" ]; then
+        dirExists="true"
+        fi
+      done
+      printf "Starting migration directly from select MacOS drive to /Users/$USER/StaplesMigration"
+      mkdir /Users/$USER/StaplesMigration
+      mkdir /Users/$USER/StaplesMigration/Migration
+      rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/directMigrationLog.txt" --exclude=.cache --exclude=.Trash --exclude=.bash_history --exclude=.bash_sessions --exclude=.plist --exclude=Library --exclude=.DS_Store --exclude=Sites --exclude=AirPort.networkConnect --exclude=.CFUserTextEncoding  --exclude=.cups "/Volumes/$migMacSrc/Users" "/Users/$USER/StaplesMigration/Migration/Users"
+      elif [ $os_check = "Linux" ]
+      then
+        printf "Linux not yet supported."
+        sleep 5
+        break
+      else
+        printf "Unsure how OS detection was bypassed. Exiting in 5 seconds."
+        sleep 5
+        exit 1
+      fi
+      break
       ;;
     "Quit")
       printf "Quitting..."
