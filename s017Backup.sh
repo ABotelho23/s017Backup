@@ -121,7 +121,7 @@ do
         dirExists="true"
         fi
       done
-      printf "Starting migration directly from select MacOS drive to /Users/$USER/StaplesMigration"
+      printf "Starting migration directly from selected MacOS drive to /Users/$USER/StaplesMigration"
       mkdir /Users/$USER/StaplesMigration
       mkdir /Users/$USER/StaplesMigration/Migration
       printf "Migrating from /Volumes/$migMacSrc/Users to /Users/$USER/StaplesMigration\n" >> /Users/$USER/StaplesMigration/directMigrationLog.txt
