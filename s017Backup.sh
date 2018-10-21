@@ -74,6 +74,7 @@ do
           dirExists="true"
           else
             printf "Drive or StaplesBackup folder not found."
+            sleep 5
           fi
         done
 
