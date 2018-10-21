@@ -63,8 +63,19 @@ do
     "Migrate From an Existing Backup")
       if [ $os_check = "MacOS" ]
       then
-        printf "Not available yet. Work in progress."
-        #INPUT NAME OF DRIVE TO MIGRATE
+        clear
+        while [ "$dirExists" != "true" ]; do
+          printf "Available drives: \n"
+          ls /Volumes
+          read -p 'Which volume from the list is the drive that contains the StaplesBackup folder? (Names are case-sensitive!) ' migBackSrc
+          if [ -d "/Volumes/$migBackSrc" ]; then
+          dirExists="true"
+          fi
+        done
+
+        printf "Migrating from /Volumes/$migBackSrc/StaplesBackup/Users to /Users/$USER/StaplesMigration\n" >> /Users/$USER/StaplesMigration/backupMigrationLog.txt
+        rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/backupMigrationLog.txt" "/Volumes/$migBackSrc/Users" "/Users/$USER/StaplesMigration/Migration"
+
       elif [ $os_check = "Linux" ]
       then
         printf "Linux not yet supported."
