@@ -70,8 +70,10 @@ do
           printf "Available drives: \n"
           ls /Volumes
           read -p 'Which volume from the list is the drive that contains the StaplesBackup folder? (Names are case-sensitive!) ' migBackSrc
-          if [ -d "/Volumes/$migBackSrc" ]; then
+          if [ -d "/Volumes/$migBackSrc/StaplesBackup" ]; then
           dirExists="true"
+          else
+            printf "Drive or StaplesBackup folder not found."
           fi
         done
 
