@@ -47,6 +47,8 @@ do
         mkdir /Volumes/$backupDes/StaplesBackup
         mkdir /Volumes/$backupDes/StaplesBackup/Backup
         rsync --verbose --recursive --human-readable --progress -u --log-file="/Volumes/$backupDes/StaplesBackup/backupLog.txt" --exclude=.cache --exclude=.Trash --exclude=.bash_history --exclude=.bash_sessions --exclude=.plist --exclude=Library --exclude=.DS_Store --exclude=Sites --exclude=AirPort.networkConnect --exclude=.CFUserTextEncoding  --exclude=.cups "/Users/" "/Volumes/$backupDes/StaplesBackup/Backup/Users"
+        printf "Backup Completed."
+
       elif [ $os_check = "Linux" ]
       then
         printf "Linux not yet supported."
@@ -75,6 +77,7 @@ do
 
         printf "Migrating from /Volumes/$migBackSrc/StaplesBackup/Users to /Users/$USER/StaplesMigration\n" >> /Users/$USER/StaplesMigration/backupMigrationLog.txt
         rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/backupMigrationLog.txt" "/Volumes/$migBackSrc/Users" "/Users/$USER/StaplesMigration/Migration"
+        printf "Migration from Existing Backup Completed."
 
       elif [ $os_check = "Linux" ]
       then
@@ -107,6 +110,8 @@ do
       mkdir /Users/$USER/StaplesMigration/Migration
       printf "Migrating from /Volumes/$migWinSrc/Users to /Users/$USER/StaplesMigration\n" >> /Users/$USER/StaplesMigration/directMigrationLog.txt
       rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/directMigrationLog.txt" --exclude="NTUSER.DAT" --exclude="NETUSER.DAT" --exclude="ntuser.dat" --exclude="netuser.dat" --exclude="*.dat.*" --exclude="*.DAT.*" --exclude="All Users" --exclude="AppData" --exclude="Application Data" --exclude="Default User" --exclude="Default" --exclude="DefaultAppPool" --exclude="Default.migrated" --exclude="desktop.ini" "/Volumes/$migWinSrc/Users" "/Users/$USER/StaplesMigration/Migration"
+      printf "Migration directly from Windows Completed."
+
       elif [ $os_check = "Linux" ]
       then
         printf "Linux not yet supported."
@@ -137,6 +142,8 @@ do
       mkdir /Users/$USER/StaplesMigration/Migration
       printf "Migrating from /Volumes/$migMacSrc/Users to /Users/$USER/StaplesMigration\n" >> /Users/$USER/StaplesMigration/directMigrationLog.txt
       rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/directMigrationLog.txt" --exclude=.cache --exclude=.Trash --exclude=.bash_history --exclude=.bash_sessions --exclude=.plist --exclude=Library --exclude=.DS_Store --exclude=Sites --exclude=AirPort.networkConnect --exclude=.CFUserTextEncoding  --exclude=.cups "/Volumes/$migMacSrc/Users" "/Users/$USER/StaplesMigration/Migration"
+      printf "Migration Directly from MacOS Completed."
+
       elif [ $os_check = "Linux" ]
       then
         printf "Linux not yet supported."
