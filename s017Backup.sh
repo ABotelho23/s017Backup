@@ -73,8 +73,7 @@ do
           if [ -d "/Volumes/$migBackSrc/StaplesBackup" ]; then
           dirExists="true"
           else
-            printf "Drive or StaplesBackup folder not found."
-            sleep 5
+            printf "Drive or StaplesBackup folder not found.\n Please try again.\n\n"
           fi
         done
 
