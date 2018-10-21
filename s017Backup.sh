@@ -78,6 +78,8 @@ do
           fi
         done
 
+        mkdir /Users/$USER/StaplesMigration
+        mkdir /Users/$USER/StaplesMigration/Migration
         printf "Migrating from /Volumes/$migBackSrc/StaplesBackup/Users to /Users/$USER/StaplesMigration\n" >> /Users/$USER/StaplesMigration/backupMigrationLog.txt
         rsync --verbose --recursive --human-readable --progress -u --log-file="/Users/$USER/StaplesMigration/backupMigrationLog.txt" "/Volumes/$migBackSrc/Users" "/Users/$USER/StaplesMigration/Migration"
         printf "Migration from Existing Backup Completed."
